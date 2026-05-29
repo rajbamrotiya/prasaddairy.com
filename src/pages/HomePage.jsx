@@ -43,8 +43,54 @@ const HomePage = () => {
     return (
         <div className="overflow-hidden">
             <Helmet>
-                <title>{t('home.hero_title')} - {t('home.welcome')}</title>
-                <meta name="description" content="Welcome to Prasad Dairy. We provide fresh, organic, and natural dairy products directly from our farm to your table." />
+                <title>{t('seo.home_title')}</title>
+                <meta name="description" content={t('seo.home_desc')} />
+                <meta name="keywords" content={t('seo.home_keywords')} />
+                <meta property="og:title" content={t('seo.home_title')} />
+                <meta property="og:description" content={t('seo.home_desc')} />
+                <meta name="twitter:title" content={t('seo.home_title')} />
+                <meta name="twitter:description" content={t('seo.home_desc')} />
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "DairyFarm",
+                        "name": "Prasad Dairy Products",
+                        "image": "https://prasaddairy.com/logo.webp",
+                        "@id": "https://prasaddairy.com",
+                        "url": "https://prasaddairy.com",
+                        "telephone": "+91-XXXXXXXXXX",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Talala-Gir",
+                            "addressLocality": "Junagadh",
+                            "addressRegion": "Gujarat",
+                            "postalCode": "362150",
+                            "addressCountry": "IN"
+                        },
+                        "geo": {
+                            "@type": "GeoCoordinates",
+                            "latitude": 21.0506556,
+                            "longitude": 70.5251931
+                        },
+                        "openingHoursSpecification": {
+                            "@type": "OpeningHoursSpecification",
+                            "dayOfWeek": [
+                                "Monday",
+                                "Tuesday",
+                                "Wednesday",
+                                "Thursday",
+                                "Friday",
+                                "Saturday"
+                            ],
+                            "opens": "08:00",
+                            "closes": "20:00"
+                        },
+                        "sameAs": [
+                            "https://www.facebook.com/prasaddairy",
+                            "https://www.instagram.com/prasaddairy"
+                        ]
+                    })}
+                </script>
             </Helmet>
 
             {/* Hero Slider */}

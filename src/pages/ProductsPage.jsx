@@ -58,7 +58,13 @@ const ProductsPage = () => {
     return (
         <div className="bg-[#FAFAFA] min-h-screen">
             <Helmet>
-                <title>{t('products.title')} - Prasad Dairy</title>
+                <title>{t('seo.products_title')}</title>
+                <meta name="description" content={t('seo.products_desc')} />
+                <meta name="keywords" content={t('seo.products_keywords')} />
+                <meta property="og:title" content={t('seo.products_title')} />
+                <meta property="og:description" content={t('seo.products_desc')} />
+                <meta name="twitter:title" content={t('seo.products_title')} />
+                <meta name="twitter:description" content={t('seo.products_desc')} />
             </Helmet>
 
             {/* Premium Hero Section */}

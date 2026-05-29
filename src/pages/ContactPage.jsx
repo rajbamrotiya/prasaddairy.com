@@ -9,9 +9,14 @@ const ContactPage = () => {
     const { t } = useLanguage();
 
     return (
-        <div className="bg-white">
+        <div className="bg-white min-h-screen">
             <Helmet>
-                <title>{t('contact.title')} - Prasad Dairy</title>
+                <title>{t('seo.contact_title')}</title>
+                <meta name="description" content={t('seo.contact_desc')} />
+                <meta property="og:title" content={t('seo.contact_title')} />
+                <meta property="og:description" content={t('seo.contact_desc')} />
+                <meta name="twitter:title" content={t('seo.contact_title')} />
+                <meta name="twitter:description" content={t('seo.contact_desc')} />
             </Helmet>
 
             {/* Hero Header */}

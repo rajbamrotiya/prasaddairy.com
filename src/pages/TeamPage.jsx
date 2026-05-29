@@ -23,7 +23,12 @@ const TeamPage = () => {
     return (
         <div className="bg-white min-h-screen">
             <Helmet>
-                <title>{t('team.title')} - Prasad Dairy</title>
+                <title>{t('seo.team_title')}</title>
+                <meta name="description" content={t('seo.team_desc')} />
+                <meta property="og:title" content={t('seo.team_title')} />
+                <meta property="og:description" content={t('seo.team_desc')} />
+                <meta name="twitter:title" content={t('seo.team_title')} />
+                <meta name="twitter:description" content={t('seo.team_desc')} />
             </Helmet>
 
             {/* Hero Header */}

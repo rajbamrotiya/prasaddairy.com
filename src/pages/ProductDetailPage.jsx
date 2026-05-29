@@ -186,7 +186,33 @@ const ProductDetailPage = () => {
     return (
         <div className="bg-white min-h-screen">
             <Helmet>
-                <title>{product.name} - Prasad Dairy</title>
+                <title>{product.name} | Prasad Dairy Products</title>
+                <meta name="description" content={product.description} />
+                <meta property="og:title" content={`${product.name} | Prasad Dairy`} />
+                <meta property="og:description" content={product.description} />
+                <meta property="og:image" content={product.image} />
+                <meta name="twitter:title" content={`${product.name} | Prasad Dairy`} />
+                <meta name="twitter:description" content={product.description} />
+                <meta name="twitter:image" content={product.image} />
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org/",
+                        "@type": "Product",
+                        "name": product.name,
+                        "image": product.image,
+                        "description": product.description,
+                        "brand": {
+                            "@type": "Brand",
+                            "name": "Prasad Dairy"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "url": window.location.href,
+                            "priceCurrency": "INR",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    })}
+                </script>
             </Helmet>
 
             <div className="pt-40 pb-12">

@@ -212,6 +212,21 @@ const translations = {
             careers: 'Careers',
             faq: 'FAQ',
             contact: 'Contact Us',
+        },
+        seo: {
+            home_title: 'Prasad Dairy Products | Pure Desi Ghee & Fresh Dairy from Gir',
+            home_desc: 'Experience the purity of Prasad Dairy. We offer authentic Desi Ghee, Shrikhand, Paneer, and fresh milk products sourced from 58 villages in the Gir Forest area.',
+            home_keywords: 'Prasad Dairy, Desi Ghee Gir, Fresh Milk Gujarat, Shrikhand Talala, Pure Dairy Products India, Organic Ghee, Gir Cow Ghee',
+            products_title: 'Our Premium Dairy Products | Prasad Dairy',
+            products_desc: 'Browse our range of pure dairy products: Ghee, Mawa, Shrikhand, Basundi, and Malai Paneer. Crafted with generational expertise and uncompromising purity.',
+            products_keywords: 'Dairy Products List, Buy Ghee Online, Shrikhand Flavors, Pure Mawa Khoya, Fresh Paneer Gujarat',
+            about_title: 'Our Legacy & Mission | About Prasad Dairy',
+            about_desc: 'Founded in Gir, Prasad Dairy has over 20 years of experience. We empower the Maldhari community and source fresh milk from the Gir Rain Forest area.',
+            about_keywords: 'Prasad Dairy History, Gir Dairy Farm, Maldhari Community Support, Sustainable Dairy Farming',
+            team_title: 'Meet Our Dedicated Team | Prasad Dairy',
+            team_desc: 'Meet the passionate farmers and experts behind Prasad Dairy. Our team ensures the highest quality standards from farm to table.',
+            contact_title: 'Contact Us | Prasad Dairy Products',
+            contact_desc: 'Have questions? Contact Prasad Dairy for bulk orders or inquiries about our fresh dairy products. We love to hear from our customers.',
         }
     },
     gu: {
@@ -394,6 +409,21 @@ const translations = {
             sat: 'શનિવાર',
             careers: 'કારકિર્દી',
             faq: 'પ્રશ્નો',
+        },
+        seo: {
+            home_title: 'પ્રસાદ ડેરી પ્રોડક્ટ્સ | શુદ્ધ દેશી ઘી અને ગીરનું તાજું દૂધ',
+            home_desc: 'પ્રસાદ ડેરીની શુદ્ધતાનો અનુભવ કરો. અમે ગીર જંગલ વિસ્તારના 58 ગામોમાંથી મેળવેલા અધિકૃત દેશી ઘી, શ્રીખંડ, પનીર અને તાજા દૂધની બનાવટો પ્રદાન કરીએ છીએ.',
+            home_keywords: 'પ્રસાદ ડેરી, દેશી ઘી ગીર, તાજું દૂધ ગુજરાત, શ્રીખંડ તાલાલા, શુદ્ધ ડેરી ઉત્પાદનો ભારત, ઓર્ગેનિક ઘી, ગીર ગાયનું ઘી',
+            products_title: 'અમારા પ્રીમિયમ ડેરી ઉત્પાદનો | પ્રસાદ ડેરી',
+            products_desc: 'અમારા શુદ્ધ ડેરી ઉત્પાદનોની શ્રેણી જુઓ: ઘી, માવો, શ્રીખંડ, બાસુંદી અને મલાઈ પનીર. પેઢીઓના અનુભવ અને અતૂટ શુદ્ધતા સાથે તૈયાર કરેલ.',
+            products_keywords: 'ડેરી ઉત્પાદનોની સૂચિ, ઓનલાઇન ઘી ખરીદો, શ્રીખંડના ફ્લેવર્સ, શુદ્ધ માવો ખોયા, તાજું પનીર ગુજરાત',
+            about_title: 'અમારો વારસો અને મિશન | પ્રસાદ ડેરી વિશે',
+            about_desc: 'ગીરમાં સ્થપાયેલ, પ્રસાદ ડેરીને 20 વર્ષથી વધુનો અનુભવ છે. અમે માલધારી સમુદાયને સશક્ત કરીએ છીએ અને ગીર રેઈન ફોરેસ્ટ વિસ્તારમાંથી તાજું દૂધ મેળવીએ છીએ.',
+            about_keywords: 'પ્રસાદ ડેરીનો ઇતિહાસ, ગીર ડેરી ફાર્મ, માલધારી સમુદાય સપોર્ટ, ટકાઉ ડેરી ખેતી',
+            team_title: 'અમારી સમર્પિત ટીમને મળો | પ્રસાદ ડેરી',
+            team_desc: 'પ્રસાદ ડેરી પાછળના ઉત્સાહી ખેડૂતો અને નિષ્ણાતોને મળો. અમારી ટીમ ફાર્મથી ટેબલ સુધી ઉચ્ચ ગુણવત્તાના ધોરણોની ખાતરી કરે છે.',
+            contact_title: 'અમારો સંપર્ક કરો | પ્રસાદ ડેરી પ્રોડક્ટ્સ',
+            contact_desc: 'કોઈ પ્રશ્નો છે? જથ્થાબંધ ઓર્ડર અથવા અમારા તાજા ડેરી ઉત્પાદનો વિશે પૂછપરછ માટે પ્રસાદ ડેરીનો સંપર્ક કરો.',
         }
     },
     hi: {
@@ -572,13 +602,28 @@ const translations = {
             subscribe_btn: 'सब्सक्राइब',
             rights: '2025 प्रसाद डेयरी प्रोडक्ट्स। सर्वाधिकार सुरक्षित।',
             emergency: 'आपातकालीन सेवा',
-            mon_fri: 'सोम - शुक्र',
-            sat: 'शनिवार',
+            mon_fri: 'સોમ - શુક્ર',
+            sat: 'શનિવાર',
             careers: 'करियर',
             faq: 'सामान्य प्रश्न',
-        }
-    }
-};
+            },
+            seo: {
+            home_title: 'प्रसाद डेयरी प्रोडक्ट्स | शुद्ध देसी घी और गिर का ताजा दूध',
+            home_desc: 'प्रसाद डेयरी की शुद्धता का अनुभव करें। हम गिर वन क्षेत्र के 58 गांवों से प्राप्त प्रामाणिक देसी घी, श्रीखंड, पनीर और ताजा दूध उत्पाद प्रदान करते हैं।',
+            home_keywords: 'प्रसाद डेयरी, देसी घी गिर, ताजा दूध गुजरात, श्रीखंड तालाला, शुद्ध डेयरी उत्पाद भारत, जैविक घी, गिर गाय का घी',
+            products_title: 'हमारे प्रीमियम डेयरी उत्पाद | प्रसाद डेयरी',
+            products_desc: 'हमारे शुद्ध डेयरी उत्पादों की श्रेणी देखें: घी, मावा, श्रीखंड, बासुंदी और मलाई पनीर। पीढ़ियों के अनुभव और अटूट शुद्धता के साथ तैयार किया गया।',
+            products_keywords: 'डेयरी उत्पादों की सूची, ऑनलाइन घी खरीदें, श्रीखंड फ्लेवर, शुद्ध मावा खोया, ताजा पनीर गुजरात',
+            about_title: 'हमारी विरासत और मिशन | प्रसाद डेयरी के बारे में',
+            about_desc: 'गिर में स्थापित, प्रसाद डेयरी को 20 से अधिक वर्षों का अनुभव है। हम मालधारी समुदाय को सशक्त बनाते हैं और गिर वर्षा वन क्षेत्र से ताजा दूध प्राप्त करते हैं।',
+            about_keywords: 'प्रसाद डेयरी का इतिहास, गिर डेयरी फार्म, मालधारी समुदाय सहायता, टिकाऊ डेयरी खेती',
+            team_title: 'हमारी समर्पित टीम से मिलें | प्रसाद डेयरी',
+            team_desc: 'प्रसाद डेयरी के पीछे समर्पित किसानों और विशेषज्ञों से मिलें। हमारी टीम खेत से लेकर मेज तक उच्चतम गुणवत्ता मानकों को सुनिश्चित करती।',
+            contact_title: 'हमसे संपर्क करें | प्रसाद डेयरी प्रोडक्ट्स',
+            contact_desc: 'कोई प्रश्न हैं? थोक ऑर्डर या हमारे ताजा डेयरी उत्पादों के बारे में पूछताछ के लिए प्रसाद डेयरी से संपर्क करें।',
+            }
+            }
+            };
 
 const LanguageContext = createContext();
 

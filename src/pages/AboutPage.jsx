@@ -15,7 +15,13 @@ const AboutPage = () => {
     return (
         <div className="bg-white">
             <Helmet>
-                <title>{t('about.title')} - Prasad Dairy</title>
+                <title>{t('seo.about_title')}</title>
+                <meta name="description" content={t('seo.about_desc')} />
+                <meta name="keywords" content={t('seo.about_keywords')} />
+                <meta property="og:title" content={t('seo.about_title')} />
+                <meta property="og:description" content={t('seo.about_desc')} />
+                <meta name="twitter:title" content={t('seo.about_title')} />
+                <meta name="twitter:description" content={t('seo.about_desc')} />
             </Helmet>
 
             {/* Hero Header */}
