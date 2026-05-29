@@ -212,6 +212,10 @@ const translations = {
             careers: 'Careers',
             faq: 'FAQ',
             contact: 'Contact Us',
+            privacy: 'Privacy Policy',
+            terms: 'Terms of Service',
+            shipping: 'Shipping Info',
+            returns: 'Returns & Refunds',
         },
         seo: {
             home_title: 'Prasad Dairy Products | Pure Desi Ghee & Fresh Dairy from Gir',
@@ -409,6 +413,10 @@ const translations = {
             sat: 'શનિવાર',
             careers: 'કારકિર્દી',
             faq: 'પ્રશ્નો',
+            privacy: 'ગોપનીયતા નીતિ',
+            terms: 'સેવાની શરતો',
+            shipping: 'શિપિંગ માહિતી',
+            returns: 'રિટર્ન અને રિફંડ',
         },
         seo: {
             home_title: 'પ્રસાદ ડેરી પ્રોડક્ટ્સ | શુદ્ધ દેશી ઘી અને ગીરનું તાજું દૂધ',
@@ -606,6 +614,10 @@ const translations = {
             sat: 'શનિવાર',
             careers: 'करियर',
             faq: 'सामान्य प्रश्न',
+            privacy: 'गोपनीयता नीति',
+            terms: 'सेवा की शर्तें',
+            shipping: 'शिपिंग जानकारी',
+            returns: 'रिटर्न और रिफंड',
             },
             seo: {
             home_title: 'प्रसाद डेयरी प्रोडक्ट्स | शुद्ध देसी घी और गिर का ताजा दूध',

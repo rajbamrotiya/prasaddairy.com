@@ -10,6 +10,10 @@ import ProductDetailPage from '@/pages/ProductDetailPage';
 import AboutPage from '@/pages/AboutPage';
 import TeamPage from '@/pages/TeamPage';
 import ContactPage from '@/pages/ContactPage';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import TermsOfService from '@/pages/TermsOfService';
+import ShippingInfo from '@/pages/ShippingInfo';
+import ReturnsPolicy from '@/pages/ReturnsPolicy';
 import { Toaster } from '@/components/ui/toaster';
 import { LanguageProvider } from '@/context/LanguageContext';
 
@@ -39,6 +43,10 @@ function App() {
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/team" element={<TeamPage />} />
                         <Route path="/contact" element={<ContactPage />} />
+                        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                        <Route path="/terms-of-service" element={<TermsOfService />} />
+                        <Route path="/shipping-info" element={<ShippingInfo />} />
+                        <Route path="/returns-policy" element={<ReturnsPolicy />} />
                     </Routes>
                     <Footer />
                     <Toaster />

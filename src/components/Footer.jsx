@@ -61,10 +61,10 @@ const Footer = () => {
                     <div className="md:col-span-2 space-y-8">
                         <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-accent">Support</h4>
                         <ul className="space-y-4 text-sm">
-                            <li><a href="#" className="text-muted hover:text-white transition-colors tracking-wide">Privacy Policy</a></li>
-                            <li><a href="#" className="text-muted hover:text-white transition-colors tracking-wide">Terms of Service</a></li>
-                            <li><a href="#" className="text-muted hover:text-white transition-colors tracking-wide">Shipping Info</a></li>
-                            <li><a href="#" className="text-muted hover:text-white transition-colors tracking-wide">Returns</a></li>
+                            <li><Link to="/privacy-policy" className="text-muted hover:text-white transition-colors tracking-wide">{t('footer.privacy')}</Link></li>
+                            <li><Link to="/terms-of-service" className="text-muted hover:text-white transition-colors tracking-wide">{t('footer.terms')}</Link></li>
+                            <li><Link to="/shipping-info" className="text-muted hover:text-white transition-colors tracking-wide">{t('footer.shipping')}</Link></li>
+                            <li><Link to="/returns-policy" className="text-muted hover:text-white transition-colors tracking-wide">{t('footer.returns')}</Link></li>
                         </ul>
                     </div>
 
