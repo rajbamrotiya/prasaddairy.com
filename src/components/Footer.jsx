@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
+import logoImg from '@/assets/images/logo.webp';
 
 const Footer = () => {
     const { t } = useLanguage();
@@ -19,9 +20,9 @@ const Footer = () => {
                     <div className="md:col-span-4 space-y-8">
                         <Link to="/" className="inline-block">
                             <img
-                                src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/ee7f6bdb0cae60daa819f1ef5a5dc197.png"
+                                src={logoImg}
                                 alt="Prasad Dairy Logo"
-                                className="h-20 w-auto"
+                                className="h-20 w-auto brightness-0 invert"
                             />
                         </Link>
                         <p className="text-muted text-sm leading-relaxed max-w-sm">

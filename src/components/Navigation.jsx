@@ -5,6 +5,8 @@ import { Menu, X, ShoppingCart, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import logoImg from '@/assets/images/logo.webp';
+
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -54,9 +56,9 @@ const Navigation = () => {
                 {/* Logo Section */}
                 <Link to="/" className="flex items-center gap-3 group">
                     <img 
-                        src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/ee7f6bdb0cae60daa819f1ef5a5dc197.png" 
+                        src={logoImg} 
                         alt="Prasad Dairy Logo" 
-                        className={`transition-all duration-500 ${scrolled ? 'h-10' : 'h-14'} w-auto object-contain`}
+                        className={`transition-all duration-500 ${scrolled ? 'h-10' : 'h-14'} w-auto object-contain ${!scrolled ? 'brightness-0 invert' : ''}`}
                     />
                 </Link>
 

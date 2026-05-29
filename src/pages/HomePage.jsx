@@ -127,7 +127,7 @@ const HomePage = () => {
                 <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-8">
                         {[
-                            { num: '20+', label: t('home.stats_projects') },
+                            { num: '60+', label: t('home.stats_projects') },
                             { num: '3K+', label: t('home.stats_mates') },
                             { num: '20K+', label: t('home.stats_capture') },
                             { num: '2K+', label: t('home.stats_customers') },

@@ -5,19 +5,37 @@ import { Link } from 'react-router-dom';
 import { Search, ArrowRight, Filter } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
+// Import images
+import gheeImg from '@/assets/images/ghee_final.webp';
+import maskaImg from '@/assets/images/maska_new.webp';
+import masalaChhasImg from '@/assets/images/masala_chhas_new.webp';
+import sweetsImg from '@/assets/images/sweets_collection.webp';
+import khoaImg from '@/assets/images/a-one.webp';
+import shrikhandImg from '@/assets/images/shrikhand_all.webp';
+import butterPackImg from '@/assets/images/butter_final.webp';
+import malaiPaneerImg from '@/assets/images/malai_paneer.webp';
+import thabdiPackImg from '@/assets/images/thabdi_pack.webp';
+import basundiPackImg from '@/assets/images/basundi_pack.webp';
+import plainMawoImg from '@/assets/images/plain_mawo.webp';
+import lassiImg from '@/assets/images/lassi_final.webp';
+
 const ProductsPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const { t } = useLanguage();
 
     const products = [
-        { id: 'khoa', name: t('products.khoa'), description: t('products.khoa_desc'), category: t('products.milk_solids'), price: 12, image: 'https://images.unsplash.com/photo-1559223669-e0065fa7f142' },
-        { id: 'shreekhand', name: t('products.shrikhand'), description: t('products.shrikhand_desc'), category: t('products.desserts'), price: 8, image: 'https://images.unsplash.com/photo-1559223669-e0065fa7f142' },
-        { id: 'chakka', name: t('products.chakka'), description: t('products.chakka_desc'), category: t('products.yogurt'), price: 6, image: 'https://images.unsplash.com/photo-1559223669-e0065fa7f142' },
-        { id: 'paneer', name: t('products.paneer'), description: t('products.paneer_desc'), category: t('products.cheese'), price: 10, image: 'https://images.unsplash.com/photo-1559223669-e0065fa7f142' },
-        { id: 'butter', name: t('products.butter'), description: t('products.butter_desc'), category: t('products.spreads'), price: 15, image: 'https://images.unsplash.com/photo-1559223669-e0065fa7f142' },
-        { id: 'curd', name: t('products.curd'), description: t('products.curd_desc'), category: t('products.yogurt'), price: 5, image: 'https://images.unsplash.com/photo-1559223669-e0065fa7f142' },
-        { id: 'ghee', name: t('products.ghee'), description: t('products.ghee_desc'), category: t('products.spreads'), price: 45, image: 'https://images.unsplash.com/photo-1559223669-e0065fa7f142' },
-        { id: 'sweets', name: t('products.sweets'), description: t('products.sweets_desc'), category: t('products.desserts'), price: 25, image: 'https://images.unsplash.com/photo-1559223669-e0065fa7f142' },
+        { id: 'khoa', name: t('products.khoa'), description: t('products.khoa_desc'), category: t('products.milk_solids'), price: 12, image: khoaImg },
+        { id: 'chakka', name: t('products.chakka'), description: t('products.chakka_desc'), category: t('products.milk_solids'), price: 20, image: maskaImg },
+        { id: 'shrikhand', name: t('products.shrikhand'), description: t('products.shrikhand_desc'), category: t('products.desserts'), price: 8, image: shrikhandImg },
+        { id: 'basundi', name: t('products.basundi'), description: t('products.basundi_desc'), category: t('products.desserts'), price: 45, image: basundiPackImg },
+        { id: 'butter', name: t('products.butter'), description: t('products.butter_desc'), category: t('products.spreads'), price: 25, image: butterPackImg },
+        { id: 'paneer', name: t('products.paneer'), description: t('products.paneer_desc'), category: t('products.cheese_cat'), price: 10, image: malaiPaneerImg },
+        { id: 'thabdi', name: t('products.thabdi'), description: t('products.thabdi_desc'), category: t('products.desserts'), price: 40, image: thabdiPackImg },
+        { id: 'plain-mawo', name: t('products.plain_mawo'), description: t('products.plain_mawo_desc'), category: t('products.milk_solids'), price: 15, image: plainMawoImg },
+        { id: 'ghee', name: t('products.ghee'), description: t('products.ghee_desc'), category: t('products.spreads'), price: 45, image: gheeImg },
+        { id: 'masala-chhas', name: t('products.masala_chhas'), description: t('products.masala_chhas_desc'), category: t('products.beverages'), price: 5, image: masalaChhasImg, isUpcoming: true },
+        { id: 'lassi', name: t('products.lassi'), description: t('products.lassi_desc'), category: t('products.beverages'), price: 4, image: lassiImg, isUpcoming: true },
+        { id: 'traditional-sweets', name: t('products.sweets'), description: t('products.sweets_desc'), category: t('products.desserts'), price: 40, image: sweetsImg, isUpcoming: true },
     ];
 
     const filteredProducts = products.filter(product => {
@@ -116,6 +134,15 @@ const ProductsPage = () => {
                                                 alt={product.name}
                                                 className="w-full h-full object-cover mix-blend-multiply"
                                             />
+                                            
+                                            {/* Upcoming Banner */}
+                                            {product.isUpcoming && (
+                                                <div className="absolute top-4 right-4 z-20">
+                                                    <span className="bg-accent text-white text-[8px] font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full shadow-lg">
+                                                        Upcoming
+                                                    </span>
+                                                </div>
+                                            )}
                                             
                                             {/* Hover CTA */}
                                             <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
