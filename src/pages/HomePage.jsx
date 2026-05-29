@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
+import { motion, useInView, animate } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Award, Droplet, Sprout, Heart, CheckCircle2, Zap, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
 import HeroSlider from '@/components/HeroSlider';
+
+const Counter = ({ target, duration = 2 }) => {
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
+    useEffect(() => {
+        if (isInView) {
+            const numericTarget = parseInt(target.replace(/[^0-9]/g, ''));
+            const controls = animate(0, numericTarget, {
+                duration: duration,
+                ease: "easeOut",
+                onUpdate: (value) => setCount(Math.round(value)),
+            });
+            return () => controls.stop();
+        }
+    }, [isInView, target, duration]);
+
+    const suffix = target.replace(/[0-9]/g, '');
+
+    return (
+        <span ref={ref}>
+            {count}{suffix}
+        </span>
+    );
+};
 
 const HomePage = () => {
     const { t } = useLanguage();
@@ -141,7 +167,9 @@ const HomePage = () => {
                                 transition={{ delay: i * 0.1, duration: 0.6 }}
                                 className="text-center"
                             >
-                                <h3 className="text-4xl md:text-6xl font-serif font-bold mb-4 text-white">{stat.num}</h3>
+                                <h3 className="text-4xl md:text-6xl font-serif font-bold mb-4 text-white">
+                                    <Counter target={stat.num} />
+                                </h3>
                                 <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent">{stat.label}</p>
                             </motion.div>
                         ))}

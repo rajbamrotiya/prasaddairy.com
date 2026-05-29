@@ -58,7 +58,7 @@ const Navigation = () => {
                     <img 
                         src={logoImg} 
                         alt="Prasad Dairy Logo" 
-                        className={`transition-all duration-500 ${scrolled ? 'h-10' : 'h-14'} w-auto object-contain ${!scrolled ? 'brightness-0 invert' : ''}`}
+                        className={`transition-all duration-500 ${scrolled ? 'h-10' : 'h-14'} w-auto object-contain`}
                     />
                 </Link>
 

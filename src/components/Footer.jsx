@@ -22,7 +22,7 @@ const Footer = () => {
                             <img
                                 src={logoImg}
                                 alt="Prasad Dairy Logo"
-                                className="h-20 w-auto brightness-0 invert"
+                                className="h-20 w-auto"
                             />
                         </Link>
                         <p className="text-muted text-sm leading-relaxed max-w-sm">
