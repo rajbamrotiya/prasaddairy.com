@@ -227,6 +227,45 @@ const HomePage = () => {
                 </div>
             </section>
 
+            {/* Mission & Values Section */}
+            <section className="py-32 bg-white">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-24">
+                        <div>
+                            <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-6 block">Our Commitment</span>
+                            <h2 className="text-4xl font-serif font-bold text-primary mb-8">Purity, Quality & Integrity</h2>
+                            <p className="text-muted text-lg leading-relaxed mb-6">
+                                At Prasad Dairy, our mission is to redefine the standards of purity in the dairy industry. We believe that every family deserves access to fresh, natural, and unprocessed dairy products that are free from harmful additives and preservatives. Our commitment to quality begins at the source, in the lush Gir Forest, where we work closely with local Maldhari families to ensure that our raw milk is collected under the most hygienic conditions.
+                            </p>
+                            <p className="text-muted text-lg leading-relaxed">
+                                We take pride in our sustainable practices and our role in supporting the local agricultural community. By providing fair prices and technical support to our farmers, we ensure a prosperous future for both the community and the environment. Our state-of-the-art processing facility allows us to maintain the nutritional integrity of our products while adhering to the highest safety standards. From our signature authentic Gir Cow Ghee (Desi Ghee) to our creamy Malai Paneer and fresh milk, every product we craft is a testament to our dedication to excellence and our love for traditional dairy craftsmanship.
+                            </p>
+                        </div>
+                        <div className="bg-secondary/20 p-12 rounded-2xl">
+                            <h3 className="font-serif font-bold text-2xl text-primary mb-8">Why Our Customers Trust Us</h3>
+                            <ul className="space-y-6">
+                                {[
+                                    { title: 'Authentic Gir Sourcing', desc: 'Directly sourced from the Gir Forest area, known for its rich biodiversity and healthy cattle.' },
+                                    { title: 'Generational Expertise', desc: 'Over two decades of experience passed down through generations of dairy masters.' },
+                                    { title: 'No Compromise on Purity', desc: 'We employ rigorous testing protocols to ensure that every drop of milk meets our strict standards.' },
+                                    { title: 'Sustainable Community Model', desc: 'Empowering over 3,000 Maldhari families through fair trade and community support initiatives.' }
+                                ].map((item, i) => (
+                                    <li key={i} className="flex gap-4">
+                                        <div className="mt-1">
+                                            <CheckCircle2 className="w-5 h-5 text-accent" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-primary mb-1">{item.title}</h4>
+                                            <p className="text-muted text-sm">{item.desc}</p>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Image Parallax Section Placeholder */}
             <section className="h-[60vh] relative overflow-hidden">
                 <motion.img
@@ -264,13 +303,13 @@ const HomePage = () => {
                                 to="/products"
                                 className="px-12 py-5 bg-primary text-white rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-accent hover:shadow-2xl transition-all duration-300"
                             >
-                                Shop Our Products
+                                Browse Our Dairy Collection
                             </Link>
                             <Link
                                 to="/contact"
                                 className="px-12 py-5 bg-transparent text-primary border border-gray-200 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-primary hover:text-white transition-all duration-300"
                             >
-                                Contact Us
+                                Get in Touch for Inquiries
                             </Link>
                         </div>
                     </motion.div>
