@@ -57,7 +57,7 @@ const translations = {
             featured_heading: 'FEATURED PRODUCTS',
             more_products: 'More Products',
             farm_house: 'The Farm House',
-            organic_100: '100% Organic',
+            organic_100: '100%',
             farm_fresh: '100% Pure',
             made_love: 'Made with Love',
             premium_quality: 'Premium Quality',

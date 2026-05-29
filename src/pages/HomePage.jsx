@@ -100,7 +100,7 @@ const HomePage = () => {
                                 className="absolute -bottom-10 -left-10 bg-accent text-white p-10 rounded-2xl shadow-2xl hidden md:block"
                             >
                                 <Sprout className="w-8 h-8 mb-4" />
-                                <p className="text-[10px] font-bold tracking-widest uppercase">100% Organic</p>
+                                <p className="text-[10px] font-bold tracking-widest uppercase">100% Pure</p>
                             </motion.div>
                         </motion.div>
                     </div>

@@ -89,7 +89,7 @@ const Footer = () => {
                     <p className="text-[10px] tracking-[0.2em] uppercase text-muted">&copy; {new Date().getFullYear()} Prasad Dairy. All Rights Reserved.</p>
                     <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></span>
-                        <p className="text-[10px] tracking-[0.2em] uppercase text-muted">Fresh from our farm</p>
+                        <p className="text-[10px] tracking-[0.2em] uppercase text-muted">Redefining Quality</p>
                     </div>
                 </div>
             </div>
