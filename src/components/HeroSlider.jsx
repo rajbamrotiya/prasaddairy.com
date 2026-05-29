@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
+// Import local images
+import heroSlide1 from '@/assets/images/hero-slide-1.png';
+import heroSlide2 from '@/assets/images/hero-slide-2.png';
+import heroSlide3 from '@/assets/images/hero-slide-3.png';
+
 const SlideContent = ({ data, children, isActive }) => {
     // Character animation variants
     const sentence = {
@@ -135,7 +140,7 @@ const HeroSlider = () => {
             id: 1,
             subtitle: t('slider.slide1.subtitle'),
             title: t('slider.slide1.title'),
-            image: "https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_gilik2gilik2gili-b7o6i.png",
+            image: heroSlide1,
             primaryLink: "/products",
             primaryText: t('slider.slide1.btn_primary'),
             secondaryLink: "/about",
@@ -145,7 +150,7 @@ const HeroSlider = () => {
             id: 2,
             subtitle: t('slider.slide2.subtitle'),
             title: t('slider.slide2.title'),
-            image: "https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_gilik2gilik2gili-hGYb7.png",
+            image: heroSlide2,
             primaryLink: "/products",
             primaryText: t('slider.slide2.btn_primary'),
             secondaryLink: "/about",
@@ -155,7 +160,7 @@ const HeroSlider = () => {
             id: 3,
             subtitle: t('slider.slide3.subtitle'),
             title: t('slider.slide3.title'),
-            image: "https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_2enu6k2enu6k2enu-k58Qi.png",
+            image: heroSlide3,
             primaryLink: "/products",
             primaryText: t('slider.slide3.btn_primary'),
             secondaryLink: "/contact",

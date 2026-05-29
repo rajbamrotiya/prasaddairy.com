@@ -7,6 +7,10 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
 import HeroSlider from '@/components/HeroSlider';
 
+// Import local images
+import supportExpert from '@/assets/images/support-expert.png';
+import farmLife from '@/assets/images/farm-life.png';
+
 const Counter = ({ target, duration = 2 }) => {
     const [count, setCount] = useState(0);
     const ref = useRef(null);
@@ -88,7 +92,7 @@ const HomePage = () => {
                                     transition={{ duration: 1.5 }}
                                     alt="Fresh dairy farming"
                                     className="w-full h-full object-cover"
-                                    src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_ludcnqludcnqludc-mzry3.png"
+                                    src={supportExpert}
                                 />
                                 <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500"></div>
                             </div>
@@ -183,7 +187,7 @@ const HomePage = () => {
                     initial={{ y: -100 }}
                     whileInView={{ y: 0 }}
                     transition={{ duration: 2, ease: "easeOut" }}
-                    src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_fw24dqfw24dqfw24-JJQGs.png"
+                    src={farmLife}
                     className="absolute inset-0 w-full h-[120%] object-cover brightness-75"
                     alt="Farm Life"
                 />

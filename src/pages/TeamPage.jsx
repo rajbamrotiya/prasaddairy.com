@@ -5,16 +5,19 @@ import { Linkedin, Mail, Facebook, Twitter } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
 
+// Import local image
+import teamMemberPlaceholder from '@/assets/images/team-member-placeholder.jpg';
+
 const TeamPage = () => {
     const { t } = useLanguage();
 
     const team = [
-        { name: 'Rosalina D. William', role: t('team.founder'), img: 'https://images.unsplash.com/photo-1595872018818-97555653a011' },
-        { name: 'Alexis D. Dowson', role: t('team.head_idea'), img: 'https://images.unsplash.com/photo-1595872018818-97555653a011' },
-        { name: 'Miranda H. Halim', role: t('team.ceo'), img: 'https://images.unsplash.com/photo-1595872018818-97555653a011' },
-        { name: 'Kevin Martin', role: t('team.farmer'), img: 'https://images.unsplash.com/photo-1595872018818-97555653a011' },
-        { name: 'Sarah Albert', role: t('team.designer'), img: 'https://images.unsplash.com/photo-1595872018818-97555653a011' },
-        { name: 'John Doe', role: t('team.marketer'), img: 'https://images.unsplash.com/photo-1595872018818-97555653a011' }
+        { name: 'Rosalina D. William', role: t('team.founder'), img: teamMemberPlaceholder },
+        { name: 'Alexis D. Dowson', role: t('team.head_idea'), img: teamMemberPlaceholder },
+        { name: 'Miranda H. Halim', role: t('team.ceo'), img: teamMemberPlaceholder },
+        { name: 'Kevin Martin', role: t('team.farmer'), img: teamMemberPlaceholder },
+        { name: 'Sarah Albert', role: t('team.designer'), img: teamMemberPlaceholder },
+        { name: 'John Doe', role: t('team.marketer'), img: teamMemberPlaceholder }
     ];
 
     return (

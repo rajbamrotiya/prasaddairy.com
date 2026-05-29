@@ -5,6 +5,10 @@ import { Star, Award, Users, Leaf, CheckCircle2, ArrowRight } from 'lucide-react
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
 
+// Import local images
+import about1 from '@/assets/images/about-1.png';
+import about2 from '@/assets/images/about-2.png';
+
 const AboutPage = () => {
     const { t } = useLanguage();
 
@@ -46,7 +50,7 @@ const AboutPage = () => {
                                 <img
                                     alt="Farm owner in field"
                                     className="w-full h-full object-cover"
-                                    src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_ludcnqludcnqludc-YspfH.png"
+                                    src={about1}
                                 />
                             </div>
                             <div className="absolute -bottom-10 -right-10 bg-accent text-white p-12 rounded-2xl shadow-2xl hidden md:block">
@@ -121,7 +125,7 @@ const AboutPage = () => {
                                 <img
                                     alt="Sustainable farming"
                                     className="w-full h-full object-cover"
-                                    src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_9l1avj9l1avj9l1a-n0DaU.png"
+                                    src={about2}
                                 />
                             </div>
                         </motion.div>

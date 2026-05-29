@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import { Search, ArrowRight, Filter, ChevronRight, LayoutGrid, List, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
+// Import local image
+import supportExpert from '@/assets/images/support-expert.png';
+
 // Import images
 import gheeImg from '@/assets/images/ghee_final.webp';
 import maskaImg from '@/assets/images/maska_new.webp';
@@ -339,7 +342,7 @@ const ProductsPage = () => {
                         >
                             <div className="aspect-square bg-secondary rounded-[4rem] overflow-hidden rotate-3 hover:rotate-0 transition-transform duration-1000">
                                 <img 
-                                    src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_ludcnqludcnqludc-mzry3.png" 
+                                    src={supportExpert} 
                                     alt="Expert Support" 
                                     className="w-full h-full object-cover"
                                 />

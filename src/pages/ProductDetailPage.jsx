@@ -6,7 +6,12 @@ import { ArrowLeft, Check, Package, Refrigerator, Star, ShoppingCart } from 'luc
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
 
-// Import images
+// Import local images
+import detailGhee from '@/assets/images/detail-ghee.jpg';
+import detailButter from '@/assets/images/detail-butter.jpg';
+import detailPaneer from '@/assets/images/detail-paneer.jpg';
+
+// Import local product images
 import gheeImg from '@/assets/images/ghee_final.webp';
 import maskaImg from '@/assets/images/maska_new.webp';
 import masalaChhasImg from '@/assets/images/masala_chhas_new.webp';
@@ -37,10 +42,10 @@ const ProductDetailPage = () => {
             packaging: '500 ml, 1 liter, 15 kg'
         },
         'a2-ghee': { 
-            name: t('products.a2_ghee'), 
-            description: t('products.a2_ghee_desc'), 
+            name: t('products.ghee'), 
+            description: t('products.ghee_desc'), 
             category: t('products.spreads'),
-            image: 'https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&q=80&w=1200',
+            image: detailGhee,
             storage: 'Cool, dry place',
             origin: 'Talala-Gir (Gir Cow Belt), Gujarat',
             packaging: '500 ml, 1 liter'
@@ -94,10 +99,10 @@ const ProductDetailPage = () => {
             flavors: 'Plain, Green Fruit, Shahi Rajbhog, Butterscotch, Kesar Pista, Afghani Mewa, Rajwadi Dryfruit, Mawa Badam, Pancharatana Delight, American Nuts, Chappan Bhog'
         },
         curd: { 
-            name: t('products.curd'), 
-            description: t('products.curd_desc'), 
-            category: t('products.yogurt'),
-            image: 'https://images.unsplash.com/photo-1485921325833-c519f76c4927?auto=format&fit=crop&q=80&w=1200',
+            name: t('products.butter'), 
+            description: t('products.butter_desc'), 
+            category: t('products.spreads'),
+            image: detailButter,
             storage: 'Refrigerated (0-4°C)',
             origin: 'Talala-Gir, Gujarat',
             packaging: '200g, 500g, 1kg'
@@ -127,7 +132,7 @@ const ProductDetailPage = () => {
             name: t('products.chaas'), 
             description: t('products.chaas_desc'), 
             category: t('products.beverages'),
-            image: 'https://images.unsplash.com/photo-1546470427-020583c27e85?auto=format&fit=crop&q=80&w=1200',
+            image: detailPaneer,
             storage: 'Chilled (0-4°C)',
             origin: 'Talala-Gir, Gujarat',
             packaging: '250ml, 500ml'
