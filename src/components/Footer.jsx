@@ -8,41 +8,39 @@ const Footer = () => {
     const { t } = useLanguage();
 
     return (
-        <footer className="bg-gradient-to-b from-[#263238] to-[#1a1f23] text-[#FFFDE7] pt-32 pb-10 relative mt-20">
-            {/* Top Logo Section */}
-            <div className="absolute top-[-50px] left-1/2 transform -translate-x-1/2 bg-white p-6 rounded-full shadow-2xl hidden md:flex items-center justify-center border-4 border-[#0065B3]/20">
-                <img
-                    src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/ee7f6bdb0cae60daa819f1ef5a5dc197.png"
-                    alt="Prasad Dairy Logo"
-                    className="h-24 w-24 object-contain"
-                />
-            </div>
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <footer className="bg-primary text-white pt-24 pb-12 overflow-hidden relative">
+            {/* Background Decorative Element */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+            
+            <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 {/* Main Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 pb-12 border-b border-white/10">
-                    {/* Column 1: About */}
-                    <div className="space-y-6">
-                        <div>
-                            <h3 className="font-serif text-xl font-bold text-white mb-4 tracking-wide uppercase">{t('footer.about_us')}</h3>
-                            <div className="w-12 h-1 bg-gradient-to-r from-[#0065B3] to-transparent mb-4"></div>
-                        </div>
-                        <p className="text-sm leading-relaxed opacity-80 text-justify">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-20 pb-16 border-b border-white/5">
+                    {/* Brand Section */}
+                    <div className="md:col-span-4 space-y-8">
+                        <Link to="/" className="inline-block">
+                            <img
+                                src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/ee7f6bdb0cae60daa819f1ef5a5dc197.png"
+                                alt="Prasad Dairy Logo"
+                                className="h-20 w-auto"
+                            />
+                        </Link>
+                        <p className="text-muted text-sm leading-relaxed max-w-sm">
                             {t('footer.about_desc')}
                         </p>
-                        <Link to="/contact" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#0065B3] hover:text-white transition-colors group">
-                            {t('contact.get_touch')}
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </Link>
+                        <div className="flex gap-4">
+                            {/* Social Icons Placeholder */}
+                            {[Facebook, Instagram, Twitter].map((Icon, i) => (
+                                <a key={i} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300">
+                                    <Icon className="w-4 h-4" />
+                                </a>
+                            ))}
+                        </div>
                     </div>
 
-                    {/* Column 2: Quick Links */}
-                    <div className="space-y-6">
-                        <div>
-                            <h3 className="font-serif text-xl font-bold text-white mb-4 tracking-wide uppercase">{t('footer.quick_links')}</h3>
-                            <div className="w-12 h-1 bg-gradient-to-r from-[#0065B3] to-transparent mb-4"></div>
-                        </div>
-                        <ul className="space-y-3 text-sm">
+                    {/* Quick Links */}
+                    <div className="md:col-span-2 space-y-8">
+                        <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-accent">Navigation</h4>
+                        <ul className="space-y-4 text-sm">
                             {[
                                 { label: 'Home', link: '/' },
                                 { label: t('footer.products'), link: '/products' },
@@ -50,8 +48,7 @@ const Footer = () => {
                                 { label: t('nav.contact'), link: '/contact' }
                             ].map((item, i) => (
                                 <li key={i}>
-                                    <Link to={item.link} className="flex items-center gap-2 opacity-80 hover:opacity-100 hover:text-[#0065B3] transition-colors group">
-                                        <span className="w-1.5 h-1.5 bg-[#0065B3] rounded-full group-hover:scale-150 transition-transform"></span>
+                                    <Link to={item.link} className="text-muted hover:text-white transition-colors tracking-wide">
                                         {item.label}
                                     </Link>
                                 </li>
@@ -59,67 +56,40 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Column 3: Business Hours */}
-                    <div className="space-y-6">
-                        <div>
-                            <h3 className="font-serif text-xl font-bold text-white mb-4 tracking-wide uppercase">{t('footer.business_hours')}</h3>
-                            <div className="w-12 h-1 bg-gradient-to-r from-[#0065B3] to-transparent mb-4"></div>
-                        </div>
-                        <ul className="space-y-3 text-sm">
-                            <li className="flex justify-between items-center pb-2 border-b border-white/10">
-                                <span className="opacity-80">{t('footer.mon_fri')}:</span>
-                                <span className="text-[#0065B3] font-semibold">09:00 - 18:00</span>
-                            </li>
-                            <li className="flex justify-between items-center pb-2 border-b border-white/10">
-                                <span className="opacity-80">{t('footer.sat')}:</span>
-                                <span className="text-[#0065B3] font-semibold">09:00 - 12:00</span>
-                            </li>
+                    {/* Support */}
+                    <div className="md:col-span-2 space-y-8">
+                        <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-accent">Support</h4>
+                        <ul className="space-y-4 text-sm">
+                            <li><a href="#" className="text-muted hover:text-white transition-colors tracking-wide">Privacy Policy</a></li>
+                            <li><a href="#" className="text-muted hover:text-white transition-colors tracking-wide">Terms of Service</a></li>
+                            <li><a href="#" className="text-muted hover:text-white transition-colors tracking-wide">Shipping Info</a></li>
+                            <li><a href="#" className="text-muted hover:text-white transition-colors tracking-wide">Returns</a></li>
                         </ul>
                     </div>
 
-                    {/* Column 4: Contact */}
-                    <div className="space-y-6">
-                        <div>
-                            <h3 className="font-serif text-xl font-bold text-white mb-4 tracking-wide uppercase">{t('footer.contact')}</h3>
-                            <div className="w-12 h-1 bg-gradient-to-r from-[#0065B3] to-transparent mb-4"></div>
-                        </div>
-                        <div className="space-y-4">
-                            <div className="flex items-start gap-3 group cursor-pointer">
-                                <div className="bg-[#0065B3]/20 p-3 rounded-lg text-[#0065B3] group-hover:bg-[#0065B3] group-hover:text-white transition-colors mt-1">
-                                    <Phone className="w-5 h-5" />
-                                </div>
-                                <div>
-                                    <p className="text-[10px] uppercase tracking-widest opacity-70">{t('footer.emergency')}</p>
-                                    <p className="font-bold text-white text-lg"><a href="tel:+917984517169" target="_blank">+91 79845 17169</a></p>
-                                </div>
+                    {/* Contact Info */}
+                    <div className="md:col-span-4 space-y-8">
+                        <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-accent">Get in Touch</h4>
+                        <div className="space-y-6">
+                            <div className="group cursor-pointer">
+                                <p className="text-[10px] uppercase tracking-widest text-muted mb-1">Emergency Call</p>
+                                <a href="tel:+917984517169" className="text-xl font-serif hover:text-accent transition-colors">+91 79845 17169</a>
                             </div>
-                            <div className="flex items-start gap-3 group cursor-pointer">
-                                <div className="bg-[#0065B3]/20 p-3 rounded-lg text-[#0065B3] group-hover:bg-[#0065B3] group-hover:text-white transition-colors mt-1">
-                                    <Mail className="w-5 h-5" />
-                                </div>
-                                <div>
-                                    <p className="text-[10px] uppercase tracking-widest opacity-70">Email</p>
-                                    <p className="font-semibold text-white text-sm break-all"><a href="mailto:prasaddairytll@gmail.com" target="_blank">prasaddairytll@gmail.com</a></p>
-                                </div>
+                            <div className="group cursor-pointer">
+                                <p className="text-[10px] uppercase tracking-widest text-muted mb-1">Drop a Message</p>
+                                <a href="mailto:prasaddairytll@gmail.com" className="text-sm font-medium hover:text-accent transition-colors">prasaddairytll@gmail.com</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Bottom Section */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6 py-8">
-                    <p className="text-xs opacity-60">&copy; {t('footer.rights')}</p>
-                    {/*<div className="flex space-x-6">
-                        <a href="#" className="bg-[#0065B3]/20 p-3 rounded-full text-[#0065B3] hover:bg-[#0065B3] hover:text-white transition-all duration-300">
-                            <Facebook className="w-5 h-5" />
-                        </a>
-                        <a href="#" className="bg-[#0065B3]/20 p-3 rounded-full text-[#0065B3] hover:bg-[#0065B3] hover:text-white transition-all duration-300">
-                            <Twitter className="w-5 h-5" />
-                        </a>
-                        <a href="#" className="bg-[#0065B3]/20 p-3 rounded-full text-[#0065B3] hover:bg-[#0065B3] hover:text-white transition-all duration-300">
-                            <Instagram className="w-5 h-5" />
-                        </a>
-                    </div>*/}
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p className="text-[10px] tracking-[0.2em] uppercase text-muted">&copy; {new Date().getFullYear()} Prasad Dairy. All Rights Reserved.</p>
+                    <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></span>
+                        <p className="text-[10px] tracking-[0.2em] uppercase text-muted">Fresh from our farm</p>
+                    </div>
                 </div>
             </div>
         </footer>

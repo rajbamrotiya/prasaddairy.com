@@ -11,7 +11,7 @@ const HomePage = () => {
     const { t } = useLanguage();
 
     return (
-        <>
+        <div className="overflow-hidden">
             <Helmet>
                 <title>{t('home.hero_title')} - {t('home.welcome')}</title>
                 <meta name="description" content="Welcome to Prasad Dairy. We provide fresh, organic, and natural dairy products directly from our farm to your table." />
@@ -21,71 +21,75 @@ const HomePage = () => {
             <HeroSlider />
 
             {/* About Section */}
-            <section className="py-24 bg-white relative z-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <section className="py-32 bg-white overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-24 items-center">
                         {/* Left - Content */}
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.6 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                         >
-                            <span className="text-[#0065B3] font-bold uppercase tracking-widest text-xs mb-2 block">{t('home.about_us')}</span>
-                            <h2 className="text-4xl md:text-5xl font-serif text-[#263238] mb-6 leading-tight">
+                            <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-6 block">{t('home.about_us')}</span>
+                            <h2 className="text-4xl md:text-6xl font-serif font-bold text-primary mb-8 leading-[1.1]">
                                 {t('home.know_about')}
                             </h2>
-                            <div className="w-16 h-1 bg-gradient-to-r from-[#0065B3] to-transparent mb-6"></div>
-                            <p className="text-[#546E7A] mb-8 leading-relaxed text-lg">
+                            <p className="text-muted mb-10 leading-relaxed text-lg max-w-xl">
                                 {t('home.know_about_desc')}
                             </p>
 
                             <Link
                                 to="/about"
-                                className="inline-flex items-center gap-2 px-8 py-3 bg-[#0065B3] text-white rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-[#004a8a] transition-colors"
+                                className="inline-flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-primary group"
                             >
-                                {t('home.read_more')} <ArrowRight className="w-4 h-4" />
+                                <span className="w-12 h-[1px] bg-primary group-hover:w-16 transition-all duration-300"></span>
+                                {t('home.read_more')}
                             </Link>
                         </motion.div>
 
                         {/* Right - Images */}
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.6 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                             className="relative"
                         >
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="mt-12">
-                                    <img
-                                        alt="Happy female farmer holding milk glass"
-                                        className="w-full h-64 object-cover rounded-lg shadow-lg mb-4"
-                                        src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_fw24dqfw24dqfw24-JJQGs.png"
-                                    />
-                                </div>
-                                <div>
-                                    <img
-                                        alt="Cows grazing in green field"
-                                        className="w-full h-64 object-cover rounded-lg shadow-lg mb-4"
-                                        src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_ludcnqludcnqludc-mzry3.png"
-                                    />
-                                    <div className="bg-[#0065B3] rounded-full w-16 h-16 flex items-center justify-center text-white absolute bottom-0 right-10 shadow-xl z-10 hover:scale-110 transition-transform">
-                                        <Sprout className="w-8 h-8" />
-                                    </div>
-                                </div>
+                            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl group">
+                                <motion.img
+                                    whileHover={{ scale: 1.05 }}
+                                    transition={{ duration: 1.5 }}
+                                    alt="Fresh dairy farming"
+                                    className="w-full h-full object-cover"
+                                    src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_ludcnqludcnqludc-mzry3.png"
+                                />
+                                <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500"></div>
                             </div>
+                            
+                            {/* Floating Badge */}
+                            <motion.div 
+                                animate={{ y: [0, -20, 0] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute -bottom-10 -left-10 bg-accent text-white p-10 rounded-2xl shadow-2xl hidden md:block"
+                            >
+                                <Sprout className="w-8 h-8 mb-4" />
+                                <p className="text-[10px] font-bold tracking-widest uppercase">100% Organic</p>
+                            </motion.div>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
             {/* Why Choose Us Section */}
-            <section className="py-24 bg-[#FFFDE7]">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <span className="text-[#0065B3] font-bold uppercase tracking-widest text-xs mb-2 block">{t('home.why_choose')}</span>
-                        <h2 className="text-4xl font-serif text-[#263238] mb-4">{t('home.why_choose_heading')}</h2>
-                        <div className="w-16 h-1 bg-gradient-to-r from-[#0065B3] to-transparent mx-auto mb-6"></div>
-                        <p className="text-[#546E7A] max-w-2xl mx-auto">Premium quality dairy products from our farm to your family</p>
+            <section className="py-32 bg-secondary/30">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                        <div className="max-w-2xl">
+                            <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">{t('home.why_choose')}</span>
+                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary">{t('home.why_choose_heading')}</h2>
+                        </div>
+                        <p className="text-muted text-sm max-w-xs mb-2">Premium quality dairy products from our farm to your family since generations.</p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-8">
@@ -96,16 +100,17 @@ const HomePage = () => {
                         ].map((item, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                className="bg-white p-8 rounded-xl text-center hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.2, duration: 0.8 }}
+                                className="bg-white p-10 rounded-2xl border border-gray-100 hover:border-accent/20 hover:shadow-2xl transition-all duration-500 group"
                             >
-                                <div className="bg-[#0065B3]/10 p-4 rounded-full text-[#0065B3] w-fit mx-auto mb-4 group hover:bg-[#0065B3] hover:text-white transition-colors">
-                                    <item.icon className="w-6 h-6" />
+                                <div className="w-12 h-12 flex items-center justify-center text-accent mb-8 group-hover:scale-110 transition-transform duration-500">
+                                    <item.icon className="w-8 h-8 stroke-[1.5]" />
                                 </div>
-                                <h3 className="font-serif font-bold text-lg text-[#263238] mb-2">{item.title}</h3>
-                                <p className="text-[#546E7A] text-sm">{item.desc}</p>
+                                <h3 className="font-serif font-bold text-xl text-primary mb-4">{item.title}</h3>
+                                <p className="text-muted text-sm leading-relaxed">{item.desc}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -113,9 +118,14 @@ const HomePage = () => {
             </section>
 
             {/* Stats Section */}
-            <section className="py-20 bg-gradient-to-br from-[#0065B3] to-[#004a8a] text-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+            <section className="py-32 bg-primary text-white relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-full opacity-10">
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full -mr-48 -mt-48 blur-3xl"></div>
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent rounded-full -ml-48 -mb-48 blur-3xl"></div>
+                </div>
+
+                <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-8">
                         {[
                             { num: '20+', label: t('home.stats_projects') },
                             { num: '3K+', label: t('home.stats_mates') },
@@ -125,75 +135,70 @@ const HomePage = () => {
                         ].map((stat, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, scale: 0.9 }}
+                                initial={{ opacity: 0, scale: 0.8 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: i * 0.1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1, duration: 0.6 }}
                                 className="text-center"
                             >
-                                <h3 className="text-4xl md:text-5xl font-bold mb-2 text-[#FFFDE7]">{stat.num}</h3>
-                                <p className="text-xs uppercase tracking-widest opacity-90">{stat.label}</p>
+                                <h3 className="text-4xl md:text-6xl font-serif font-bold mb-4 text-white">{stat.num}</h3>
+                                <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent">{stat.label}</p>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
+            {/* Image Parallax Section Placeholder */}
+            <section className="h-[60vh] relative overflow-hidden">
+                <motion.img
+                    initial={{ y: -100 }}
+                    whileInView={{ y: 0 }}
+                    transition={{ duration: 2, ease: "easeOut" }}
+                    src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_fw24dqfw24dqfw24-JJQGs.png"
+                    className="absolute inset-0 w-full h-[120%] object-cover brightness-75"
+                    alt="Farm Life"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <h2 className="text-white text-4xl md:text-7xl font-serif font-bold tracking-tight text-center px-6">
+                        Crafting Purity Since 1995
+                    </h2>
+                </div>
+            </section>
+
             {/* CTA Section */}
-            <section className="py-20 bg-[#FFFDE7]">
-                <div className="max-w-4xl mx-auto px-4 text-center">
+            <section className="py-32 bg-white text-center">
+                <div className="max-w-4xl mx-auto px-6">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1 }}
                     >
-                        <h2 className="text-4xl font-serif text-[#263238] mb-4">Experience Premium Quality</h2>
-                        <p className="text-[#546E7A] mb-8 text-lg max-w-2xl mx-auto">
-                            Join thousands of satisfied customers enjoying our fresh, organic dairy products delivered right to your door.
+                        <h2 className="text-4xl md:text-6xl font-serif font-bold text-primary mb-8 tracking-tight leading-tight">
+                            Experience the Essence of Purity
+                        </h2>
+                        <p className="text-muted mb-12 text-lg max-w-2xl mx-auto leading-relaxed">
+                            Join thousands of satisfied families enjoying our fresh, organic dairy products delivered right to your door with care and integrity.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div className="flex flex-col sm:flex-row gap-6 justify-center">
                             <Link
                                 to="/products"
-                                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[#0065B3] text-white rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-[#004a8a] transition-colors"
+                                className="px-12 py-5 bg-primary text-white rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-accent hover:shadow-2xl transition-all duration-300"
                             >
-                                Shop Now <ArrowRight className="w-4 h-4" />
+                                Shop Our Products
                             </Link>
                             <Link
                                 to="/contact"
-                                className="inline-flex items-center justify-center gap-2 px-8 py-3 border-2 border-[#0065B3] text-[#0065B3] rounded-lg font-bold uppercase tracking-widest text-sm hover:bg-[#0065B3] hover:text-white transition-colors"
+                                className="px-12 py-5 bg-transparent text-primary border border-gray-200 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-primary hover:text-white transition-all duration-300"
                             >
-                                Learn More
+                                Contact Us
                             </Link>
                         </div>
                     </motion.div>
                 </div>
             </section>
-
-            {/* Benefits Section */}
-            <section className="py-16 bg-[#0065B3] text-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center">
-                        {[
-                            { icon: Award, label: t('home.farm_fresh') },
-                            { icon: Heart, label: t('home.made_love') },
-                            { icon: Star, label: t('home.premium_quality') }
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                className="flex flex-col items-center group cursor-pointer"
-                            >
-                                <div className="w-14 h-14 flex items-center justify-center border-2 border-white/30 rounded-full mb-4 group-hover:bg-white group-hover:text-[#0065B3] transition-colors">
-                                    <item.icon className="w-6 h-6" />
-                                </div>
-                                <span className="text-xs font-bold uppercase tracking-widest text-center">{item.label}</span>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-        </>
+        </div>
     );
 };
 

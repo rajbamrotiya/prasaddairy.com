@@ -23,24 +23,24 @@ module.exports = {
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
                 primary: {
-                    DEFAULT: 'hsl(var(--primary))',
-                    foreground: 'hsl(var(--primary-foreground))',
+                    DEFAULT: '#0F172A', // Deep Slate
+                    foreground: '#FFFFFF',
                 },
                 secondary: {
-                    DEFAULT: 'hsl(var(--secondary))',
-                    foreground: 'hsl(var(--secondary-foreground))',
+                    DEFAULT: '#F1F5F9', // Light Slate
+                    foreground: '#0F172A',
+                },
+                accent: {
+                    DEFAULT: '#3B82F6', // Modern Blue
+                    foreground: '#FFFFFF',
                 },
                 destructive: {
                     DEFAULT: 'hsl(var(--destructive))',
                     foreground: 'hsl(var(--destructive-foreground))',
                 },
                 muted: {
-                    DEFAULT: 'hsl(var(--muted))',
-                    foreground: 'hsl(var(--muted-foreground))',
-                },
-                accent: {
-                    DEFAULT: 'hsl(var(--accent))',
-                    foreground: 'hsl(var(--accent-foreground))',
+                    DEFAULT: '#64748B', // Muted Slate
+                    foreground: '#F1F5F9',
                 },
                 popover: {
                     DEFAULT: 'hsl(var(--popover))',
@@ -50,6 +50,10 @@ module.exports = {
                     DEFAULT: 'hsl(var(--card))',
                     foreground: 'hsl(var(--card-foreground))',
                 },
+            },
+            fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+                serif: ['Space Grotesk', 'serif'],
             },
             borderRadius: {
                 lg: 'var(--radius)',

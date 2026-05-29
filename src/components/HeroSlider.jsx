@@ -18,104 +18,72 @@ const SlideContent = ({ data, children }) => (
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
     >
         {/* Image Background with Scale Effect */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
             <motion.div
                 className="w-full h-full"
-                initial={{ scale: 1.15 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 8, ease: "easeOut" }}
+                initial={{ scale: 1.2, filter: "blur(10px)" }}
+                animate={{ scale: 1, filter: "blur(0px)" }}
+                transition={{ duration: 10, ease: "easeOut" }}
             >
                 {children}
             </motion.div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+            <div className="absolute inset-0 bg-black/40" />
         </div>
 
         {/* Text Content */}
-        <div className="relative z-10 h-full flex items-center justify-center text-center px-4 pt-10">
-            <div className="max-w-5xl mx-auto">
-                {/* Logo */}
-                <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.2, duration: 0.8 }}
-                    className="mb-8"
-                >
-                    <div className="inline-block p-4 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                        <img
-                            src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/pdp_logo-1-1-iIEZ5.png"
-                            alt="Prasad Dairy Logo"
-                            className="h-20 w-20 md:h-32 md:w-32 object-contain drop-shadow-lg"
-                        />
-                    </div>
-                </motion.div>
-
+        <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
+            <div className="max-w-4xl">
                 {/* Subtitle */}
-                <motion.span
+                <motion.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.4, duration: 0.8 }}
-                    className="text-[#FFFDE7] font-bold tracking-[0.3em] uppercase text-xs md:text-sm mb-4 block drop-shadow-md"
+                    transition={{ delay: 0.5, duration: 1 }}
+                    className="flex items-center justify-center gap-3 mb-6"
                 >
-                    {data.subtitle}
-                </motion.span>
+                    <span className="h-[1px] w-8 bg-white/50"></span>
+                    <span className="text-white font-medium tracking-[0.4em] uppercase text-[10px] md:text-xs">
+                        {data.subtitle}
+                    </span>
+                    <span className="h-[1px] w-8 bg-white/50"></span>
+                </motion.div>
 
                 {/* Title */}
                 <motion.h1
-                    initial={{ y: 30, opacity: 0 }}
+                    initial={{ y: 40, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.6, duration: 0.8 }}
-                    className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 drop-shadow-lg leading-tight"
+                    transition={{ delay: 0.7, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                    className="text-5xl md:text-8xl font-serif font-bold text-white mb-10 leading-[0.9] tracking-tight"
                 >
-                    {data.title}
+                    {data.title.split(' ').map((word, i) => (
+                        <span key={i} className="inline-block mr-4">{word}</span>
+                    ))}
                 </motion.h1>
-
-                {/* Decorative Line */}
-                <motion.div
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 64, opacity: 1 }}
-                    transition={{ delay: 0.8, duration: 0.8 }}
-                    className="h-1 bg-gradient-to-r from-[#0065B3] to-transparent mx-auto mb-8"
-                />
 
                 {/* CTA Buttons */}
                 <motion.div
-                    initial={{ y: 40, opacity: 0 }}
+                    initial={{ y: 30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 1, duration: 0.8 }}
-                    className="flex flex-col sm:flex-row justify-center gap-4 mt-8"
+                    transition={{ delay: 1.2, duration: 1 }}
+                    className="flex flex-col sm:flex-row justify-center gap-6"
                 >
                     <Link
                         to={data.primaryLink}
-                        className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0065B3] hover:bg-[#004a8a] text-white rounded-lg font-bold uppercase tracking-widest text-sm transition-all duration-300 shadow-lg hover:shadow-xl group"
+                        className="px-10 py-4 bg-white text-primary rounded-full font-bold uppercase tracking-widest text-[10px] transition-all duration-300 hover:bg-accent hover:text-white hover:shadow-2xl"
                     >
                         {data.primaryText}
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <Link
                         to={data.secondaryLink}
-                        className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/20 hover:bg-white hover:text-[#0065B3] text-white border-2 border-white rounded-lg font-bold uppercase tracking-widest text-sm transition-all duration-300 backdrop-blur-sm group"
+                        className="px-10 py-4 bg-transparent text-white border border-white/30 rounded-full font-bold uppercase tracking-widest text-[10px] transition-all duration-300 hover:bg-white hover:text-primary backdrop-blur-sm"
                     >
                         {data.secondaryText}
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </motion.div>
             </div>
         </div>
-
-        {/* Floating Elements */}
-        <motion.div
-            className="absolute top-20 right-10 w-32 h-32 bg-[#0065B3]/10 rounded-full blur-3xl"
-            animate={{ y: [0, 20, 0] }}
-            transition={{ duration: 6, repeat: Infinity }}
-        />
-        <motion.div
-            className="absolute bottom-32 left-10 w-40 h-40 bg-[#FFFDE7]/5 rounded-full blur-3xl"
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 8, repeat: Infinity }}
-        />
     </motion.div>
 );
 
@@ -158,7 +126,7 @@ const HeroSlider = () => {
         if (!isAutoPlay) return;
         const timer = setInterval(() => {
             setCurrent(prev => (prev + 1) % slides.length);
-        }, 7000);
+        }, 8000);
         return () => clearInterval(timer);
     }, [slides.length, isAutoPlay]);
 
@@ -178,13 +146,13 @@ const HeroSlider = () => {
     };
 
     return (
-        <section className="relative h-[85vh] md:h-[95vh] bg-[#263238] overflow-hidden group">
+        <section className="relative h-screen bg-black overflow-hidden group">
             <AnimatePresence mode="wait">
                 {current === 0 && (
                     <SlideContent key="slide1" data={slides[0]}>
                         <img
                             alt="Cows grazing in farm landscape"
-                            className="absolute inset-0 w-full h-full object-cover"
+                            className="absolute inset-0 w-full h-full object-cover opacity-80"
                             src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_gilik2gilik2gili-b7o6i.png"
                         />
                     </SlideContent>
@@ -193,7 +161,7 @@ const HeroSlider = () => {
                     <SlideContent key="slide2" data={slides[1]}>
                         <img
                             alt="Fresh milk pouring into glass"
-                            className="absolute inset-0 w-full h-full object-cover"
+                            className="absolute inset-0 w-full h-full object-cover opacity-80"
                             src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_gilik2gilik2gili-hGYb7.png"
                         />
                     </SlideContent>
@@ -202,7 +170,7 @@ const HeroSlider = () => {
                     <SlideContent key="slide3" data={slides[2]}>
                         <img
                             alt="Assorted organic dairy products"
-                            className="absolute inset-0 w-full h-full object-cover"
+                            className="absolute inset-0 w-full h-full object-cover opacity-80"
                             src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_2enu6k2enu6k2enu-k58Qi.png"
                         />
                     </SlideContent>
@@ -210,48 +178,44 @@ const HeroSlider = () => {
             </AnimatePresence>
 
             {/* Navigation Arrows */}
-            <div className="absolute inset-0 z-20 flex items-center justify-between px-4 md:px-8 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <motion.button
+            <div className="absolute inset-0 z-20 flex items-center justify-between px-8 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <button
                     onClick={prevSlide}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="pointer-events-auto bg-[#0065B3]/80 hover:bg-[#0065B3] text-white p-4 rounded-full backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="pointer-events-auto w-14 h-14 flex items-center justify-center border border-white/20 text-white rounded-full backdrop-blur-sm hover:bg-white hover:text-primary transition-all duration-500"
                 >
                     <ChevronLeft className="w-6 h-6" />
-                </motion.button>
-                <motion.button
+                </button>
+                <button
                     onClick={nextSlide}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="pointer-events-auto bg-[#0065B3]/80 hover:bg-[#0065B3] text-white p-4 rounded-full backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="pointer-events-auto w-14 h-14 flex items-center justify-center border border-white/20 text-white rounded-full backdrop-blur-sm hover:bg-white hover:text-primary transition-all duration-500"
                 >
                     <ChevronRight className="w-6 h-6" />
-                </motion.button>
+                </button>
             </div>
 
             {/* Dot Indicators */}
-            <div className="absolute bottom-20 left-0 w-full z-20 flex justify-center gap-3">
+            <div className="absolute bottom-12 left-0 w-full z-20 flex justify-center gap-4">
                 {slides.map((_, idx) => (
-                    <motion.button
+                    <button
                         key={idx}
                         onClick={() => goToSlide(idx)}
-                        whileHover={{ scale: 1.2 }}
-                        className={`rounded-full transition-all duration-300 shadow-sm border ${
+                        className={`transition-all duration-700 rounded-full ${
                             current === idx
-                                ? 'bg-[#0065B3] w-10 h-3 border-transparent'
-                                : 'bg-white/50 w-3 h-3 hover:bg-white border-white/50'
+                                ? 'bg-white w-12 h-1'
+                                : 'bg-white/30 w-4 h-1 hover:bg-white/60'
                         }`}
                     />
                 ))}
             </div>
 
             {/* Slide Counter */}
-            <div className="absolute bottom-20 right-8 z-20 text-white font-bold text-sm tracking-widest hidden md:block">
-                <span className="text-[#0065B3]">{String(current + 1).padStart(2, '0')}</span> / {String(slides.length).padStart(2, '0')}
+            <div className="absolute top-1/2 -translate-y-1/2 right-12 z-20 hidden lg:flex flex-col items-center gap-4">
+                <span className="h-20 w-[1px] bg-white/20"></span>
+                <div className="text-white font-serif italic text-2xl">
+                    0{current + 1}
+                </div>
+                <span className="h-20 w-[1px] bg-white/20"></span>
             </div>
-
-            {/* Wavy Bottom Divider */}
-            <WavyBottom color="#FFFFFF" />
         </section>
     );
 };
