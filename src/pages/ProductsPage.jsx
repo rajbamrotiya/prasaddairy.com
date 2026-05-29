@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Search, ArrowRight, Filter } from 'lucide-react';
+import { Search, ArrowRight, Filter, ChevronRight, LayoutGrid, List, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 // Import images
@@ -21,7 +21,14 @@ import lassiImg from '@/assets/images/lassi_final.webp';
 
 const ProductsPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [activeCategory, setActiveCategory] = useState('All');
     const { t } = useLanguage();
+    const { scrollY } = useScroll();
+    
+    const headerY = useTransform(scrollY, [0, 500], [0, -150]);
+    const headerOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+
+    const categories = ['All', t('products.milk_solids'), t('products.desserts'), t('products.spreads'), t('products.cheese_cat'), t('products.beverages')];
 
     const products = [
         { id: 'khoa', name: t('products.khoa'), description: t('products.khoa_desc'), category: t('products.milk_solids'), price: 12, image: khoaImg },
@@ -41,152 +48,288 @@ const ProductsPage = () => {
     const filteredProducts = products.filter(product => {
         const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             product.description.toLowerCase().includes(searchTerm.toLowerCase());
-        return matchesSearch;
+        const matchesCategory = activeCategory === 'All' || product.category === activeCategory;
+        return matchesSearch && matchesCategory;
     });
 
     return (
-        <div className="bg-white min-h-screen">
+        <div className="bg-[#FAFAFA] min-h-screen">
             <Helmet>
                 <title>{t('products.title')} - Prasad Dairy</title>
             </Helmet>
 
-            {/* Hero Header */}
-            <div className="relative bg-primary pt-48 pb-32 overflow-hidden">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full -mr-64 -mt-64 blur-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/5 rounded-full -ml-32 -mb-32 blur-3xl"></div>
-
-                <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+            {/* Premium Hero Section */}
+            <div className="relative h-[70vh] bg-primary flex items-center justify-center overflow-hidden">
+                <motion.div 
+                    style={{ y: headerY, opacity: headerOpacity }}
+                    className="relative z-10 max-w-7xl mx-auto px-6 text-center"
+                >
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">{t('products.shop_now')}</span>
-                        <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-8 tracking-tight">{t('products.title')}</h1>
-                        <p className="text-muted text-lg max-w-2xl mx-auto mb-10 leading-relaxed">Discover our range of premium dairy products, crafted with generational expertise and uncompromising purity.</p>
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.3, duration: 0.8 }}
+                            className="flex items-center justify-center gap-3 mb-6"
+                        >
+                            <Sparkles className="w-4 h-4 text-accent" />
+                            <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px]">{t('products.shop_now')}</span>
+                            <Sparkles className="w-4 h-4 text-accent" />
+                        </motion.div>
+                        <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold text-white mb-8 tracking-tighter leading-none">
+                            {t('products.title')}
+                        </h1>
+                        <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light italic">
+                            Elevating daily rituals through generational craftsmanship and unwavering purity.
+                        </p>
                     </motion.div>
+                </motion.div>
+
+                {/* Decorative Background Elements */}
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[120px] animate-pulse" />
+                    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px]" />
                 </div>
             </div>
 
-            {/* Search Section */}
-            <section className="py-12 border-b border-gray-100 sticky top-[60px] z-40 bg-white/80 backdrop-blur-xl">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                        {/* Search Bar */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            className="relative w-full md:max-w-md"
-                        >
-                            <input
-                                type="text"
-                                placeholder={t('products.search_placeholder')}
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full pl-0 pr-10 py-3 bg-transparent border-b border-gray-200 text-primary placeholder-muted focus:outline-none focus:border-accent transition-all text-sm font-medium"
-                            />
-                            <Search className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-muted group-hover:text-accent" />
-                        </motion.div>
+            {/* Interactive Filter Bar */}
+            <div className="sticky top-[70px] z-40 bg-white/70 backdrop-blur-2xl border-b border-black/5">
+                <div className="max-w-7xl mx-auto px-6 py-6">
+                    <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+                        {/* Categories */}
+                        <div className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 no-scrollbar w-full lg:w-auto">
+                            {categories.map((cat) => (
+                                <button
+                                    key={cat}
+                                    onClick={() => setActiveCategory(cat)}
+                                    className={`px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest whitespace-nowrap transition-all duration-500 ${
+                                        activeCategory === cat 
+                                        ? 'bg-primary text-white shadow-[0_10px_20px_rgba(0,0,0,0.1)] scale-105' 
+                                        : 'bg-transparent text-muted hover:text-primary hover:bg-black/5'
+                                    }`}
+                                >
+                                    {cat}
+                                </button>
+                            ))}
+                        </div>
 
-                        {/* Product Count */}
-                        <motion.div 
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            className="text-[10px] font-bold tracking-[0.2em] uppercase text-muted"
+                        {/* Search & Stats */}
+                        <div className="flex items-center gap-8 w-full lg:w-auto border-t lg:border-t-0 pt-6 lg:pt-0 border-black/5">
+                            <div className="relative flex-1 lg:w-80 group">
+                                <Search className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-muted group-focus-within:text-accent transition-colors" />
+                                <input
+                                    type="text"
+                                    placeholder={t('products.search_placeholder')}
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    className="w-full bg-transparent pl-8 pr-4 py-2 text-sm font-medium border-b border-black/5 focus:border-accent focus:outline-none transition-all placeholder:text-muted/50"
+                                />
+                            </div>
+                            <div className="hidden sm:flex flex-col items-end">
+                                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent">{filteredProducts.length} Items</span>
+                                <span className="text-[8px] font-bold tracking-[0.2em] uppercase text-muted/40">Curated Collection</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Products Grid with Advanced Animations */}
+            <section className="py-24 md:py-32">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+                    <AnimatePresence mode="popLayout">
+                        {filteredProducts.length === 0 ? (
+                            <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -20 }}
+                                className="text-center py-40"
+                            >
+                                <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-8">
+                                    <Search className="w-8 h-8 text-muted" />
+                                </div>
+                                <h3 className="text-3xl font-serif font-bold text-primary mb-4">No treasures found</h3>
+                                <p className="text-muted mb-8 max-w-md mx-auto">We couldn't find any products matching your criteria. Try adjusting your filters or search term.</p>
+                                <button
+                                    onClick={() => { setSearchTerm(''); setActiveCategory('All'); }}
+                                    className="px-8 py-4 bg-primary text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-accent transition-all duration-500 shadow-xl"
+                                >
+                                    Reset Selection
+                                </button>
+                            </motion.div>
+                        ) : (
+                            <motion.div 
+                                layout
+                                className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-24"
+                            >
+                                {filteredProducts.map((product, index) => (
+                                    <React.Fragment key={product.id}>
+                                        <motion.div
+                                            layout
+                                            initial={{ opacity: 0, y: 40 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, scale: 0.9 }}
+                                            transition={{ 
+                                                duration: 0.8, 
+                                                delay: index * 0.05, 
+                                                ease: [0.22, 1, 0.36, 1] 
+                                            }}
+                                            className="group"
+                                        >
+                                            <Link to={`/products/${product.id}`} className="block">
+                                                {/* Advanced Product Image Card */}
+                                                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-white shadow-[0_20px_50px_rgba(0,0,0,0.03)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] transition-all duration-700 mb-8">
+                                                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
+                                                    
+                                                    <motion.img
+                                                        whileHover={{ scale: 1.1, rotate: -2 }}
+                                                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                                                        src={product.image}
+                                                        alt={product.name}
+                                                        className="w-full h-full object-cover p-4"
+                                                    />
+
+                                                    {/* Status Badges */}
+                                                    <div className="absolute top-6 left-6 right-6 flex justify-between items-start z-20">
+                                                        <span className="bg-white/90 backdrop-blur-md text-primary text-[8px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full shadow-sm">
+                                                            {product.category}
+                                                        </span>
+                                                        {product.isUpcoming && (
+                                                            <motion.span 
+                                                                animate={{ scale: [1, 1.1, 1] }}
+                                                                transition={{ duration: 2, repeat: Infinity }}
+                                                                className="bg-accent text-white text-[8px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full shadow-lg"
+                                                            >
+                                                                New
+                                                            </motion.span>
+                                                        )}
+                                                    </div>
+
+                                                    {/* Hover Interaction Overlay */}
+                                                    <div className="absolute inset-0 flex flex-col items-center justify-center z-20 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-[0.22,1,0.36,1]">
+                                                        <div className="w-16 h-16 bg-white text-primary rounded-full flex items-center justify-center shadow-2xl mb-4 group-hover:rotate-[360deg] transition-transform duration-1000">
+                                                            <ArrowRight className="w-6 h-6" />
+                                                        </div>
+                                                        <span className="text-white text-[10px] font-black uppercase tracking-[0.3em] drop-shadow-lg">
+                                                            Discover
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                {/* Refined Product Details */}
+                                                <div className="px-2">
+                                                    <div className="flex justify-between items-center mb-3">
+                                                        <h3 className="text-2xl font-serif font-bold text-primary group-hover:text-accent transition-colors duration-500">
+                                                            {product.name}
+                                                        </h3>
+                                                        <div className="h-[1px] flex-1 mx-4 bg-black/5 group-hover:bg-accent/20 transition-colors duration-500" />
+                                                    </div>
+                                                    <p className="text-muted/70 text-sm leading-relaxed font-medium line-clamp-2 mb-6">
+                                                        {product.description}
+                                                    </p>
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="flex -space-x-2">
+                                                            {[1,2,3].map(i => (
+                                                                <div key={i} className="w-6 h-6 rounded-full border-2 border-white bg-secondary flex items-center justify-center overflow-hidden">
+                                                                    <div className="w-full h-full bg-accent/20 animate-pulse" />
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                        <span className="text-[9px] font-bold text-muted/40 uppercase tracking-widest">Trusted by 2K+ Families</span>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        </motion.div>
+                                        {index === 3 && (
+                                            <motion.div 
+                                                className="col-span-full py-16 px-12 bg-primary rounded-[3rem] relative overflow-hidden my-12"
+                                                initial={{ opacity: 0, scale: 0.95 }}
+                                                whileInView={{ opacity: 1, scale: 1 }}
+                                                viewport={{ once: true }}
+                                            >
+                                                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                                                    <div className="max-w-xl text-center md:text-left">
+                                                        <h2 className="text-4xl font-serif font-bold text-white mb-4">Quality you can taste, <br />Purity you can trust.</h2>
+                                                        <p className="text-white/60 text-sm md:text-base leading-relaxed">Experience the difference of milk processed with traditional methods and modern safety standards.</p>
+                                                    </div>
+                                                    <Link to="/about" className="px-10 py-5 bg-accent text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-primary transition-all duration-500 shadow-2xl">
+                                                        Learn Our Process
+                                                    </Link>
+                                                </div>
+                                                <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full -mr-32 -mt-32 blur-3xl" />
+                                                <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/5 rounded-full -ml-32 -mb-32 blur-3xl" />
+                                            </motion.div>
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+            </section>
+
+            {/* Premium Support / Trust Section */}
+            <section className="py-40 bg-white relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-24 items-center">
+                        <motion.div
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1 }}
                         >
-                            {filteredProducts.length} {filteredProducts.length === 1 ? 'Available Product' : 'Available Products'}
+                            <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">Personalized Care</span>
+                            <h2 className="text-4xl md:text-6xl font-serif font-bold text-primary mb-8 tracking-tight leading-[1.1]">
+                                Need assistance in <br />your wellness journey?
+                            </h2>
+                            <p className="text-muted text-lg mb-12 leading-relaxed">
+                                Our experts are dedicated to helping you select the finest dairy products tailored to your family's specific nutritional needs.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-6">
+                                <Link
+                                    to="/contact"
+                                    className="px-12 py-5 bg-primary text-white rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-accent transition-all duration-500 shadow-2xl flex items-center justify-center gap-3 group"
+                                >
+                                    Speak with our team
+                                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                                <div className="flex items-center gap-4 px-8">
+                                    <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
+                                        <Sparkles className="w-5 h-5 text-accent" />
+                                    </div>
+                                    <div className="text-left">
+                                        <div className="text-[10px] font-bold text-primary uppercase tracking-widest">Support 24/7</div>
+                                        <div className="text-[9px] font-bold text-muted uppercase tracking-widest">Always here for you</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.2 }}
+                            className="relative"
+                        >
+                            <div className="aspect-square bg-secondary rounded-[4rem] overflow-hidden rotate-3 hover:rotate-0 transition-transform duration-1000">
+                                <img 
+                                    src="https://horizons-cdn.hostinger.com/85e3d67c-81c2-44f6-84ab-85e62ff61b1d/gemini_generated_image_ludcnqludcnqludc-mzry3.png" 
+                                    alt="Expert Support" 
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                            <div className="absolute -bottom-10 -left-10 bg-white p-8 rounded-3xl shadow-2xl hidden md:block animate-bounce-slow">
+                                <div className="text-accent text-3xl font-serif font-bold mb-1">100%</div>
+                                <div className="text-[10px] font-bold text-primary uppercase tracking-widest">Purity Guaranteed</div>
+                            </div>
                         </motion.div>
                     </div>
                 </div>
-            </section>
-
-            {/* Products Grid */}
-            <section className="py-24">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                    {filteredProducts.length === 0 ? (
-                        <div className="text-center py-40">
-                            <h3 className="text-3xl font-serif text-primary mb-6">No matches found</h3>
-                            <button
-                                onClick={() => setSearchTerm('')}
-                                className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent hover:text-primary transition-colors"
-                            >
-                                Clear filters
-                            </button>
-                        </div>
-                    ) : (
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-20">
-                            {filteredProducts.map((product, index) => (
-                                <motion.div
-                                    key={product.id}
-                                    initial={{ opacity: 0, y: 40 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                                    className="group"
-                                >
-                                    <Link to={`/products/${product.id}`} className="block space-y-8">
-                                        {/* Product Image */}
-                                        <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-secondary relative">
-                                            <motion.img
-                                                whileHover={{ scale: 1.05 }}
-                                                transition={{ duration: 1 }}
-                                                src={product.image}
-                                                alt={product.name}
-                                                className="w-full h-full object-cover mix-blend-multiply"
-                                            />
-                                            
-                                            {/* Upcoming Banner */}
-                                            {product.isUpcoming && (
-                                                <div className="absolute top-4 right-4 z-20">
-                                                    <span className="bg-accent text-white text-[8px] font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full shadow-lg">
-                                                        Upcoming
-                                                    </span>
-                                                </div>
-                                            )}
-                                            
-                                            {/* Hover CTA */}
-                                            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                                                <span className="px-6 py-3 bg-white text-primary text-[10px] font-bold uppercase tracking-widest rounded-full shadow-2xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                                    View Details
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        {/* Product Info */}
-                                        <div className="space-y-3">
-                                            <div className="flex justify-between items-start">
-                                                <h3 className="text-xl font-serif font-bold text-primary group-hover:text-accent transition-colors duration-300">
-                                                    {product.name}
-                                                </h3>
-                                            </div>
-                                            <p className="text-muted text-sm leading-relaxed line-clamp-2">
-                                                {product.description}
-                                            </p>
-                                            <div className="pt-4 flex items-center gap-4 text-accent">
-                                                <span className="h-[1px] w-8 bg-accent group-hover:w-12 transition-all duration-500"></span>
-                                                <span className="text-[10px] font-bold uppercase tracking-widest">Explore</span>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </motion.div>
-                            ))}
-                        </div>
-                    )}
-                </div>
-            </section>
-
-            {/* Support Section */}
-            <section className="py-32 bg-secondary/30">
-                <div className="max-w-4xl mx-auto px-6 text-center">
-                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-8 tracking-tight">Need personalized assistance?</h2>
-                    <p className="text-muted mb-12 text-lg leading-relaxed">Our experts are here to help you choose the right products for your family's health and wellness.</p>
-                    <Link
-                        to="/contact"
-                        className="px-12 py-5 bg-primary text-white rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-accent transition-all duration-300"
-                    >
-                        Speak with our team
-                    </Link>
-                </div>
+                {/* Background Decor */}
+                <div className="absolute top-0 right-0 w-1/3 h-full bg-secondary/20 -skew-x-12 translate-x-1/2" />
             </section>
         </div>
     );
