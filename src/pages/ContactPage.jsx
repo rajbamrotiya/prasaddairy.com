@@ -150,7 +150,7 @@ const ContactPage = () => {
                         </Link>
                         
                         <a 
-                            href={`https://wa.me/917984517169?text=${encodeURIComponent("Hello Prasad Dairy, I would like to inquire about bulk ordering and custom requirements. Please share more details.")}`}
+                            href={`https://wa.me/+9194226992952?text=${encodeURIComponent("Hello Prasad Dairy, I would like to inquire about bulk ordering and custom requirements. Please share more details.")}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-12 py-5 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-full font-bold uppercase tracking-widest text-[10px] hover:from-emerald-500 hover:to-teal-400 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 group"
