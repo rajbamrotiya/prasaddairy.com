@@ -185,9 +185,9 @@ const AboutPage = () => {
                     <div className="grid md:grid-cols-4 gap-12">
                         {[
                             { number: '20+', label: 'Years of Excellence', icon: Award },
-                            { number: '10K+', label: 'Happy Customers', icon: Users },
+                            { number: '2K+', label: 'Happy Customers', icon: Users },
                             { number: '100%', label: 'Pure Quality', icon: Star },
-                            { number: '50+', label: 'Farm Products', icon: Leaf }
+                            { number: '50+', label: 'Products', icon: Leaf }
                         ].map((stat, i) => (
                             <motion.div
                                 key={i}

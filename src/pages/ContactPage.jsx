@@ -100,7 +100,7 @@ const ContactPage = () => {
                         >
                             <div>
                                 <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-6 block">Our Location</span>
-                                <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-8 tracking-tight">Visit our home in the Gir Somnath hills.</h2>
+                                <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-8 tracking-tight">Visit our Dairy in the Gir Somnath hills.</h2>
                                 <p className="text-muted text-lg leading-relaxed">
                                     Located in the heart of Gujarat's lush landscape, our dairy farm is where the magic of purity happens. We welcome visits by appointment to experience our commitment to quality.
                                 </p>
