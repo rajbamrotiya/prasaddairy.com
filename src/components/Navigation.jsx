@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ShoppingCart, Globe } from 'lucide-react';
+import { Menu, X, ShoppingCart, Globe, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -87,6 +87,17 @@ const Navigation = () => {
                             <DropdownMenuItem onClick={() => setLanguage('en')} className="cursor-pointer focus:bg-accent focus:text-white transition-colors text-primary">English</DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
+
+                    {/* Share Button Desktop */}
+                    <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        onClick={() => window.dispatchEvent(new CustomEvent('open-share-modal'))}
+                        className={`font-bold transition-colors ${textClass} hover:text-accent hover:bg-transparent px-2`}
+                        title="Share this page"
+                    >
+                        <Share2 className="w-4 h-4" />
+                    </Button>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -123,11 +134,30 @@ const Navigation = () => {
                         </motion.div>
                     ))}
 
+                    {/* Mobile Share Link */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: navItems.length * 0.1 }}
+                        className="pt-6 border-t border-gray-100"
+                    >
+                        <button
+                            onClick={() => {
+                                setIsOpen(false);
+                                window.dispatchEvent(new CustomEvent('open-share-modal'));
+                            }}
+                            className="flex items-center gap-3 text-2xl font-serif font-medium text-primary hover:text-accent transition-colors"
+                        >
+                            <Share2 className="w-5 h-5 text-accent animate-pulse" />
+                            <span>Share This Page</span>
+                        </button>
+                    </motion.div>
+
                     {/* Mobile Language Switcher */}
                     <motion.div 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4 }}
+                        transition={{ delay: (navItems.length + 1) * 0.1 }}
                         className="pt-6 border-t border-gray-100 mt-6"
                     >
                         <p className="text-[10px] font-bold text-muted uppercase tracking-[0.2em] mb-4">Select Language</p>

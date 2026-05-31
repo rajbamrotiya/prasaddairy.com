@@ -18,6 +18,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { LanguageProvider } from '@/context/LanguageContext';
 import Loader from '@/components/Loader';
 import { AnimatePresence } from 'framer-motion';
+import ShareWidget from '@/components/ShareWidget';
 
 function App() {
     const [isLoading, setIsLoading] = React.useState(true);
@@ -62,6 +63,7 @@ function App() {
                         <Route path="/returns-policy" element={<ReturnsPolicy />} />
                     </Routes>
                     <Footer />
+                    <ShareWidget />
                     <Toaster />
                 </div>
             </Router>

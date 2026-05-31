@@ -41,7 +41,7 @@ const Footer = () => {
                     {/* Quick Links */}
                     <div className="md:col-span-2 space-y-8">
                         <h4 className="text-[10px] font-bold tracking-[0.3em] uppercase text-accent">Navigation</h4>
-                        <ul className="space-y-4 text-sm">
+                        <ul className="space-y-4 text-sm font-normal">
                             {[
                                 { label: 'Go to Home', link: '/' },
                                 { label: 'Explore Products', link: '/products' },
@@ -54,6 +54,14 @@ const Footer = () => {
                                     </Link>
                                 </li>
                             ))}
+                            <li>
+                                <button 
+                                    onClick={() => window.dispatchEvent(new CustomEvent('open-share-modal'))}
+                                    className="text-muted hover:text-white transition-colors tracking-wide outline-none focus:text-white text-left"
+                                >
+                                    Share This Page
+                                </button>
+                            </li>
                         </ul>
                     </div>
 
