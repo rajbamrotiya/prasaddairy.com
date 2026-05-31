@@ -124,7 +124,7 @@ const translations = {
             category: 'Category',
             tags: 'Tags',
             tags_value: 'Organic, Fresh, Dairy',
-            desc_suffix: 'Made from 100% organic milk from our happy cows. Rich in nutrients and authentic taste.',
+            desc_suffix: 'Made from 100% organic milk from our happy buffalo. Rich in nutrients and authentic taste.',
             packaging: 'Packaging',
             storage: 'Storage',
             origin: 'Origin',
