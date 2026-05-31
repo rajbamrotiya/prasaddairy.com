@@ -55,9 +55,9 @@ const ProductDetailPage = () => {
             category: t('products.spreads'),
             image: detailGhee,
             storage: 'Cool, dry place',
-            origin: 'Talala-Gir (Gir Cow Belt), Gujarat',
+            origin: 'Talala-Gir (Gir Forest Region), Gujarat',
             packaging: '500 ml, 1 liter',
-            features: ['A2 Cow Milk', 'Bilona Method', 'Rich in Nutrients', 'Gir Cow Belt']
+            features: ['A2 Buffalo Milk', 'Bilona Method', 'Rich in Nutrients', 'Gir Forest Region']
         },
         'masala-chhas': { 
             name: t('products.masala_chhas'), 

@@ -170,7 +170,7 @@ const HomePage = () => {
 
                     <div className="grid md:grid-cols-3 gap-8">
                         {[
-                            { icon: Droplet, title: 'Pure & Fresh', desc: 'Fresh milk delivered daily from our healthy cows' },
+                            { icon: Droplet, title: 'Pure & Fresh', desc: 'Fresh milk delivered daily from our healthy buffaloes' },
                             { icon: Shield, title: 'Quality Assured', desc: 'Rigorous testing and quality control standards' },
                             { icon: Heart, title: 'Made with Love', desc: 'Every product crafted with care and dedication' }
                         ].map((item, i) => (
