@@ -92,7 +92,7 @@ const translations = {
             paneer: 'Fresh Malai Paneer',
             paneer_desc: 'Extra soft and creamy Malai Paneer, rich in protein and crafted for the perfect texture in every dish. Available in 200g, 1kg, and 5kg packs.',
             butter: 'Pure Cooking Butter',
-            butter_desc: 'Traditional desi cooking butter, freshly churned for authentic taste and aroma. Available in 1kg to 20kg bulk packaging with customization available for specific requirements.',
+            butter_desc: 'Traditional desi cooking butter, freshly churned for authentic taste and aroma. Available in 1kg to 20kg available for specific requirements.',
             curd: 'Fresh Curd (Dahi)',
             curd_desc: 'Thick, creamy, and naturally fermented yogurt, rich in probiotics for gut health.',
             ghee: 'Desi Ghee',
