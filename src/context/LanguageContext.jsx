@@ -35,7 +35,7 @@ const translations = {
             our_products: 'Our Products',
             about_us: 'About Us',
             know_about: 'Our Heritage in Gir',
-            know_about_sub: 'Purity Since 1995',
+            know_about_sub: 'Purity Since 2005',
             know_about_desc: 'Founded in the heart of Talala-Gir, Prasad Dairy has more than 20 years of experience in crafting premium dairy products. We started our journey in a humble 10x10 shed and have since grown into a sophisticated 30,000 sq. feet factory layout equipped with modern, well-maintained equipment. Our heritage is rooted in the natural resources of the Gir Rain Forest Area, where we source raw milk of the highest quality. Our journey began by gathering fresh milk from neighboring villages, and today, our extensive collection network covers 58 villages with 60 dedicated milk collection centers throughout the Gir Forest. We are committed to empowering the Maldhari community and providing our customers with pure, fresh, and organic dairy products that carry the essence of our land.',
             award: 'YOUNG FARMER EXCELLENCE AWARD 2022',
             service_details: 'Explore Our Services',

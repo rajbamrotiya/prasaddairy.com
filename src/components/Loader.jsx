@@ -90,7 +90,7 @@ const Loader = () => {
                             transition={{ delay: 0.8, duration: 0.8 }}
                             className="text-accent text-[9px] font-bold tracking-[0.5em] uppercase"
                         >
-                            Purity Since 1995
+                            Purity Since 2005
                         </motion.p>
                         <motion.span
                             initial={{ scaleX: 0 }}

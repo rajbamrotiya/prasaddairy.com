@@ -121,7 +121,7 @@ const SlideContent = ({ data, children, isActive }) => {
                 <div className="flex flex-col gap-12 items-center">
                     <span className="w-[1px] h-32 bg-gradient-to-b from-transparent via-white/20 to-transparent"></span>
                     <div className="rotate-90 text-[10px] font-bold tracking-[0.5em] uppercase text-white/30 whitespace-nowrap">
-                        PRASAD DAIRY • EST 1995
+                        PRASAD DAIRY • EST 2005
                     </div>
                     <span className="w-[1px] h-32 bg-gradient-to-b from-transparent via-white/20 to-transparent"></span>
                 </div>

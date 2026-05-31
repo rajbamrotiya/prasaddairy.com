@@ -278,7 +278,7 @@ const HomePage = () => {
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                     <h2 className="text-white text-4xl md:text-7xl font-serif font-bold tracking-tight text-center px-6">
-                        Crafting Purity Since 1995
+                        Crafting Purity Since 2005
                     </h2>
                 </div>
             </section>
