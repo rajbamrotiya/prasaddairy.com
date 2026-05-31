@@ -78,7 +78,7 @@ const translations = {
             spreads: 'Spreads',
             beverages: 'Beverages',
             khoa: 'Mawa / Khoya',
-            khoa_desc: 'Traditional pure milk solids available in Regular, Danedar, and Bengali varieties. Offered in Classic, Super, and A-one quality grades. Bulk 10kg packaging with customization available.',
+            khoa_desc: 'Traditional pure milk solids available in Regular, Danedar, and Bengali varieties. Offered in Classic, Super, and A-one quality grades.',
             plain_mawo: 'Plain Mawo',
             plain_mawo_desc: 'Pure and fresh Plain Mawo from the famous farms of Gir. Ideal for authentic traditional cooking and sweets. Available in 1kg and 10kg packaging.',
             shrikhand: 'Shrikhand',

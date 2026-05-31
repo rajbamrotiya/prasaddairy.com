@@ -428,17 +428,18 @@ const ProductDetailPage = () => {
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-14 text-muted/80 text-[11px] font-medium">
                                         <div className="flex items-center gap-2">
                                             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                                            <span>Custom Packaging & Sizes</span>
+                                            <span>Tailored Formulation / Fats</span>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                                            <span>Tailored Formulation / Fats</span>
+                                            <span>Custom Packaging & Sizes</span>
                                         </div>
+
                                     </div>
                                     
                                     <div className="pl-14 pt-2">
                                         <a
-                                            href={`https://wa.me/+9194226992952?text=${encodeURIComponent(`Hello Prasad Dairy, I would like to inquire about a Bulk Order / Customization for ${product.name}. Please share available options and price quotes.`)}`}
+                                            href={`https://wa.me/+919426992952?text=${encodeURIComponent(`Hello Prasad Dairy, I would like to inquire about a Bulk Order / Customization for ${product.name}. Please share available options and price quotes.`)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="inline-flex items-center gap-2.5 px-6 py-3 bg-white hover:bg-emerald-50 border border-emerald-500/20 hover:border-emerald-500/40 text-emerald-700 rounded-full font-bold uppercase tracking-wider text-[9px] transition-all duration-300 shadow-sm"
@@ -462,7 +463,7 @@ const ProductDetailPage = () => {
                                     </Link>
                                     
                                     <a
-                                        href={`https://wa.me/+9194226992952?text=${encodeURIComponent(`Hello Prasad Dairy, I am interested in inquiring about ${product.name}. Please share more details.`)}`}
+                                        href={`https://wa.me/+919426992952?text=${encodeURIComponent(`Hello Prasad Dairy, I am interested in inquiring about ${product.name}. Please share more details.`)}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="w-full sm:w-auto px-10 py-6 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white rounded-full font-bold uppercase tracking-[0.2em] text-[10px] transition-all duration-500 shadow-[0_20px_40px_rgba(16,185,129,0.15)] flex items-center justify-center gap-3 group"
