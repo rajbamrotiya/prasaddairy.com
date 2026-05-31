@@ -205,10 +205,19 @@ const ProductDetailPage = () => {
         setActiveImage(product.image);
     }, [product.image]);
 
+    const getAbsoluteUrl = (path) => {
+        if (!path) return '';
+        if (path.startsWith('http://') || path.startsWith('https://')) {
+            return path;
+        }
+        const cleanPath = path.startsWith('/') ? path : `/${path}`;
+        return `${window.location.origin}${cleanPath}`;
+    };
+
     const handleShare = async () => {
         const shareData = {
             title: `${product.name} | Prasad Dairy Products`,
-            text: `Check out ${product.name} from Prasad Dairy!`,
+            text: `${product.name} - ${product.description}\n\nCheck out the pure, premium quality dairy products from Prasad Dairy!`,
             url: window.location.href
         };
 
@@ -242,18 +251,22 @@ const ProductDetailPage = () => {
             <Helmet>
                 <title>{product.name} | Prasad Dairy Products</title>
                 <meta name="description" content={product.description} />
-                <meta property="og:title" content={`${product.name} | Prasad Dairy`} />
+                <meta property="og:type" content="product" />
+                <meta property="og:title" content={`${product.name} | Prasad Dairy Products`} />
                 <meta property="og:description" content={product.description} />
-                <meta property="og:image" content={product.image} />
-                <meta name="twitter:title" content={`${product.name} | Prasad Dairy`} />
+                <meta property="og:image" content={getAbsoluteUrl(product.image)} />
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:site_name" content="Prasad Dairy" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`${product.name} | Prasad Dairy Products`} />
                 <meta name="twitter:description" content={product.description} />
-                <meta name="twitter:image" content={product.image} />
+                <meta name="twitter:image" content={getAbsoluteUrl(product.image)} />
                 <script type="application/ld+json">
                     {JSON.stringify({
                         "@context": "https://schema.org/",
                         "@type": "Product",
                         "name": product.name,
-                        "image": product.image,
+                        "image": getAbsoluteUrl(product.image),
                         "description": product.description,
                         "brand": {
                             "@type": "Brand",
