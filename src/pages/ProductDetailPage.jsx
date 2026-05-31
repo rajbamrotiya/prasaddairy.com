@@ -170,7 +170,7 @@ const ProductDetailPage = () => {
             description: t('products.thabdi_desc'), 
             category: t('products.desserts'),
             image: thabdiPackImg,
-            storage: 'Cool, dry place or Refrigerated',
+            storage: 'Refrigerated (-10°C)',
             origin: 'Talala-Gir, Gujarat',
             packaging: '10kg',
             types: 'Thabdi Dano, Special Thabdi',

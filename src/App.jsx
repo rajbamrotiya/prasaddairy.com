@@ -16,10 +16,24 @@ import ShippingInfo from '@/pages/ShippingInfo';
 import ReturnsPolicy from '@/pages/ReturnsPolicy';
 import { Toaster } from '@/components/ui/toaster';
 import { LanguageProvider } from '@/context/LanguageContext';
+import Loader from '@/components/Loader';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
+    const [isLoading, setIsLoading] = React.useState(true);
+
+    React.useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1800);
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <LanguageProvider>
+            <AnimatePresence mode="wait">
+                {isLoading && <Loader />}
+            </AnimatePresence>
             <Router>
                 <ScrollToTop />
                 <Helmet>
