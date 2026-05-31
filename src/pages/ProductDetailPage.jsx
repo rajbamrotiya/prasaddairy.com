@@ -223,6 +223,19 @@ const ProductDetailPage = () => {
 
         if (navigator.share) {
             try {
+                // Fetch the product image and convert it into a file to attach directly to share drawer
+                try {
+                    const response = await fetch(product.image);
+                    const blob = await response.blob();
+                    const file = new File([blob], `${productId || 'product'}.png`, { type: blob.type });
+                    
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        shareData.files = [file];
+                    }
+                } catch (imgError) {
+                    console.warn("Could not attach product image file to share data:", imgError);
+                }
+
                 await navigator.share(shareData);
                 toast({
                     title: "Shared Successfully!",
@@ -255,6 +268,10 @@ const ProductDetailPage = () => {
                 <meta property="og:title" content={`${product.name} | Prasad Dairy Products`} />
                 <meta property="og:description" content={product.description} />
                 <meta property="og:image" content={getAbsoluteUrl(product.image)} />
+                <meta property="og:image:secure_url" content={getAbsoluteUrl(product.image)} />
+                <meta property="og:image:type" content={product.image && product.image.endsWith('.webp') ? 'image/webp' : 'image/jpeg'} />
+                <meta property="og:image:width" content="600" />
+                <meta property="og:image:height" content="600" />
                 <meta property="og:url" content={window.location.href} />
                 <meta property="og:site_name" content="Prasad Dairy" />
                 <meta name="twitter:card" content="summary_large_image" />
