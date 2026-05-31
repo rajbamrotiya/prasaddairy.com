@@ -148,6 +148,19 @@ const ContactPage = () => {
                         <Link to="/products" className="px-12 py-5 bg-primary text-white rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-accent transition-all duration-300">
                             Explore Products
                         </Link>
+                        
+                        <a 
+                            href={`https://wa.me/917984517169?text=${encodeURIComponent("Hello Prasad Dairy, I would like to inquire about bulk ordering and custom requirements. Please share more details.")}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-12 py-5 bg-gradient-to-r from-emerald-600 to-teal-500 text-white rounded-full font-bold uppercase tracking-widest text-[10px] hover:from-emerald-500 hover:to-teal-400 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 group"
+                        >
+                            <svg className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.45 5.236.002 9.5-4.254 9.504-9.487.002-2.536-1.002-4.909-2.822-6.73C16.13 2.57 13.766 1.57 11.23 1.57c-5.244 0-9.513 4.268-9.517 9.5-.002 1.94.507 3.516 1.47 5.125L2.23 19.91l3.805-.998zM17.848 14.5c-.322-.16-.1.9-.387-.308-.485-1.22-.647-1.53-.97-1.691-.322-.16-.516-.12-.742.13-.226.25-.87.87-1.066 1.096-.193.226-.387.26-.708.1-.322-.16-1.36-.501-2.593-1.6-1.008-.9-1.688-2.01-1.882-2.333-.193-.322-.02-.497.14-.657.14-.14.32-.37.48-.56.16-.19.22-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.742-1.79-.1.17-1.016-2.45-.194-.226-.38-.226-.516.002-.68.016-.84.016-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.69 2.58 4.1 3.62 1.41.6 2.5 1.01 3.32 1.28.83.26 1.58.22 2.18.13.67-.1 2.06-.84 2.35-1.66.29-.82.29-1.53.2-1.67-.09-.14-.32-.23-.64-.39z" />
+                            </svg>
+                            WhatsApp Chat
+                        </a>
+
                         <a href="mailto:prasaddairytll@gmail.com" className="px-12 py-5 bg-transparent text-primary border border-gray-200 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-primary hover:text-white transition-all duration-300">
                             Email Inquiries
                         </a>

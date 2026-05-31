@@ -5,6 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Check, Package, Refrigerator, Star, ShoppingCart, ChevronRight, Share2, Info, Droplets, ShieldCheck, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
+import { useToast } from '@/components/ui/use-toast';
 
 // Import local images
 import detailGhee from '@/assets/images/detail-ghee.jpg';
@@ -30,6 +31,7 @@ import lassiImg from '@/assets/images/lassi_final.webp';
 const ProductDetailPage = () => {
     const { productId } = useParams();
     const { t } = useLanguage();
+    const { toast } = useToast();
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -128,7 +130,7 @@ const ProductDetailPage = () => {
             gallery: [aOneImg, superImg, classicImg],
             storage: 'Refrigerated (-10°C)',
             origin: 'Talala-Gir, Gujarat',
-            packaging: '10 kg (Customization available as per request)',
+            packaging: '10 kg',
             types: 'Regular, Danedar, Bengali',
             quality: 'Classic, Super, A-one',
             features: ['Premium Grades', 'Artisanal Methods', 'Bulk Customization', 'Pure Milk Solids']
@@ -191,7 +193,7 @@ const ProductDetailPage = () => {
             image: butterPackImg,
             storage: 'Refrigerated (-10°C)',
             origin: 'Talala-Gir, Gujarat',
-            packaging: '1kg, 20kg (Customization available as per request)',
+            packaging: '1kg, 20kg',
             features: ['Desi Churned', 'Pure White Butter', 'Authentic Aroma', 'Fresh Daily']
         }
     };
@@ -202,6 +204,38 @@ const ProductDetailPage = () => {
     useEffect(() => {
         setActiveImage(product.image);
     }, [product.image]);
+
+    const handleShare = async () => {
+        const shareData = {
+            title: `${product.name} | Prasad Dairy Products`,
+            text: `Check out ${product.name} from Prasad Dairy!`,
+            url: window.location.href
+        };
+
+        if (navigator.share) {
+            try {
+                await navigator.share(shareData);
+                toast({
+                    title: "Shared Successfully!",
+                    description: "Thank you for sharing this product.",
+                });
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    copyToClipboard();
+                }
+            }
+        } else {
+            copyToClipboard();
+        }
+    };
+
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(window.location.href);
+        toast({
+            title: "Link Copied!",
+            description: "Product link copied to clipboard successfully.",
+        });
+    };
 
     return (
         <div ref={containerRef} className="bg-[#FAFAFA] min-h-screen">
@@ -374,8 +408,51 @@ const ProductDetailPage = () => {
                                     ))}
                                 </div>
 
+                                {/* Bulk Order & Customization Section */}
+                                <div className="p-8 bg-gradient-to-br from-emerald-50/50 to-teal-50/30 rounded-3xl border border-emerald-500/10 shadow-[0_20px_50px_rgba(16,185,129,0.03)] space-y-6 relative overflow-hidden group hover:border-emerald-500/20 transition-all duration-500">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-emerald-500/10 transition-colors" />
+                                    
+                                    <div className="flex items-start gap-4">
+                                        <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0">
+                                            <Package className="w-5 h-5" />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <div className="flex items-center gap-2">
+                                                <h3 className="text-sm font-bold text-primary tracking-wide">{t('product_detail.bulk_order_title')}</h3>
+                                                <span className="px-2 py-0.5 bg-emerald-500/10 text-emerald-700 text-[8px] font-black uppercase tracking-widest rounded-full">Custom</span>
+                                            </div>
+                                            <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">{t('product_detail.bulk_order_desc')}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-14 text-muted/80 text-[11px] font-medium">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                            <span>Custom Packaging & Sizes</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                            <span>Tailored Formulation / Fats</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="pl-14 pt-2">
+                                        <a
+                                            href={`https://wa.me/+9194226992952?text=${encodeURIComponent(`Hello Prasad Dairy, I would like to inquire about a Bulk Order / Customization for ${product.name}. Please share available options and price quotes.`)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2.5 px-6 py-3 bg-white hover:bg-emerald-50 border border-emerald-500/20 hover:border-emerald-500/40 text-emerald-700 rounded-full font-bold uppercase tracking-wider text-[9px] transition-all duration-300 shadow-sm"
+                                        >
+                                            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.45 5.236.002 9.5-4.254 9.504-9.487.002-2.536-1.002-4.909-2.822-6.73C16.13 2.57 13.766 1.57 11.23 1.57c-5.244 0-9.513 4.268-9.517 9.5-.002 1.94.507 3.516 1.47 5.125L2.23 19.91l3.805-.998zM17.848 14.5c-.322-.16-.1.9-.387-.308-.485-1.22-.647-1.53-.97-1.691-.322-.16-.516-.12-.742.13-.226.25-.87.87-1.066 1.096-.193.226-.387.26-.708.1-.322-.16-1.36-.501-2.593-1.6-1.008-.9-1.688-2.01-1.882-2.333-.193-.322-.02-.497.14-.657.14-.14.32-.37.48-.56.16-.19.22-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.742-1.79-.1.17-1.016-2.45-.194-.226-.38-.226-.516.002-.68.016-.84.016-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.69 2.58 4.1 3.62 1.41.6 2.5 1.01 3.32 1.28.83.26 1.58.22 2.18.13.67-.1 2.06-.84 2.35-1.66.29-.82.29-1.53.2-1.67-.09-.14-.32-.23-.64-.39z" />
+                                            </svg>
+                                            {t('product_detail.bulk_order_inquiry')}
+                                        </a>
+                                    </div>
+                                </div>
+
                                 {/* Call to Action */}
-                                <div className="flex flex-col sm:flex-row items-center gap-6 pt-6">
+                                <div className="flex flex-col sm:flex-row sm:flex-wrap items-center gap-6 pt-6">
                                     <Link
                                         to="/contact"
                                         className="w-full sm:w-auto px-12 py-6 bg-primary text-white rounded-full font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-accent transition-all duration-500 shadow-[0_20px_40px_rgba(26,77,46,0.2)] flex items-center justify-center gap-3 group"
@@ -383,7 +460,23 @@ const ProductDetailPage = () => {
                                         Place Inquiry
                                         <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                     </Link>
-                                    <button className="flex items-center gap-3 text-muted/60 hover:text-accent transition-colors">
+                                    
+                                    <a
+                                        href={`https://wa.me/+9194226992952?text=${encodeURIComponent(`Hello Prasad Dairy, I am interested in inquiring about ${product.name}. Please share more details.`)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full sm:w-auto px-10 py-6 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white rounded-full font-bold uppercase tracking-[0.2em] text-[10px] transition-all duration-500 shadow-[0_20px_40px_rgba(16,185,129,0.15)] flex items-center justify-center gap-3 group"
+                                    >
+                                        <svg className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.45 5.236.002 9.5-4.254 9.504-9.487.002-2.536-1.002-4.909-2.822-6.73C16.13 2.57 13.766 1.57 11.23 1.57c-5.244 0-9.513 4.268-9.517 9.5-.002 1.94.507 3.516 1.47 5.125L2.23 19.91l3.805-.998zM17.848 14.5c-.322-.16-.1.9-.387-.308-.485-1.22-.647-1.53-.97-1.691-.322-.16-.516-.12-.742.13-.226.25-.87.87-1.066 1.096-.193.226-.387.26-.708.1-.322-.16-1.36-.501-2.593-1.6-1.008-.9-1.688-2.01-1.882-2.333-.193-.322-.02-.497.14-.657.14-.14.32-.37.48-.56.16-.19.22-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.742-1.79-.1.17-1.016-2.45-.194-.226-.38-.226-.516.002-.68.016-.84.016-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.69 2.58 4.1 3.62 1.41.6 2.5 1.01 3.32 1.28.83.26 1.58.22 2.18.13.67-.1 2.06-.84 2.35-1.66.29-.82.29-1.53.2-1.67-.09-.14-.32-.23-.64-.39z" />
+                                        </svg>
+                                        {t('product_detail.whatsapp_chat')}
+                                    </a>
+
+                                    <button 
+                                        onClick={handleShare}
+                                        className="flex items-center gap-3 text-muted/60 hover:text-accent transition-colors"
+                                    >
                                         <Share2 className="w-4 h-4" />
                                         <span className="text-[9px] font-bold uppercase tracking-widest">Share Product</span>
                                     </button>

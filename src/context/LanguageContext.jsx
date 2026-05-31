@@ -128,6 +128,10 @@ const translations = {
             packaging: 'Packaging',
             storage: 'Storage',
             origin: 'Origin',
+            whatsapp_chat: 'Chat on WhatsApp',
+            bulk_order_title: 'Bulk Order & Customization',
+            bulk_order_desc: 'Customization available as per request.',
+            bulk_order_inquiry: 'Inquire for Bulk Order',
         },
         about: {
             who_we_are: 'Who We Are',
@@ -357,6 +361,10 @@ const translations = {
             packaging: 'પેકેજિંગ',
             storage: 'સંગ્રહ',
             origin: 'ઉત્પત્તિ',
+            whatsapp_chat: 'વોટ્સએપ પર ચેટ કરો',
+            bulk_order_title: 'બલ્ક ઓર્ડર અને કસ્ટમાઇઝેશન',
+            bulk_order_desc: 'વિનંતી મુજબ કસ્ટમાઇઝેશન ઉપલબ્ધ છે. અમે મોટા પ્રસંગો, લગ્નો, હોટલ અને ચોક્કસ પેકેજિંગ/બ્રાન્ડિંગ વિકલ્પો માટે ઓર્ડર સ્વીકારીએ છીએ.',
+            bulk_order_inquiry: 'બલ્ક ઓર્ડર માટે પૂછપરછ કરો',
         },
         about: {
             who_we_are: 'અમે કોણ છીએ',
@@ -558,6 +566,10 @@ const translations = {
             packaging: 'पैकेजिंग',
             storage: 'भंडारण',
             origin: 'उत्पत्ति',
+            whatsapp_chat: 'व्हाट्सएप पर चैट करें',
+            bulk_order_title: 'थोक ऑर्डर और अनुकूलन',
+            bulk_order_desc: 'अनुरोध के अनुसार अनुकूलन उपलब्ध है। हम बड़े आयोजनों, शादियों, होटलों और विशिष्ट पैकेजिंग/ब्रांडिंग विकल्पों के लिए सेवा प्रदान करते हैं।',
+            bulk_order_inquiry: 'थोक ऑर्डर के लिए पूछताछ करें',
         },
         about: {
             who_we_are: 'हम कौन हैं',
