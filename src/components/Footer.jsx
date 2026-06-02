@@ -93,9 +93,22 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <p className="text-[10px] tracking-[0.2em] uppercase text-muted">&copy; {new Date().getFullYear()} Prasad Dairy. All Rights Reserved.</p>
-                    <div className="flex items-center gap-2">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+                    <p className="text-[10px] tracking-[0.2em] uppercase text-muted md:w-1/3">&copy; {new Date().getFullYear()} Prasad Dairy. All Rights Reserved.</p>
+                    
+                    <p className="text-[10px] tracking-[0.2em] uppercase text-muted md:w-1/3 md:text-center">
+                        Developed by{' '}
+                        <a 
+                            href="https://tech.rewindnature.in/" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-white hover:text-accent font-bold transition-all duration-300 relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-accent hover:after:w-full after:transition-all after:duration-300"
+                        >
+                            Rewind Nature Tech
+                        </a>
+                    </p>
+
+                    <div className="flex items-center justify-center md:justify-end gap-2 md:w-1/3">
                         <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></span>
                         <p className="text-[10px] tracking-[0.2em] uppercase text-muted">Redefining Quality</p>
                     </div>
